@@ -117,6 +117,7 @@ void SYSTEM_Initialize(void)
     OSCILLATOR_Initialize();
     EPWM1_Initialize();
     TMR2_Initialize();
+    TMR0_Initialize();
     EUSART1_Initialize();
 }
 

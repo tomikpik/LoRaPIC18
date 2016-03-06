@@ -1,67 +1,5 @@
 
-# 1 "mcc_generated_files/mcc.c"
-
-
-# 50
-#pragma config FOSC = INTIO67
-#pragma config PLLCFG = OFF
-#pragma config PRICLKEN = ON
-#pragma config FCMEN = OFF
-#pragma config IESO = OFF
-
-
-#pragma config PWRTEN = OFF
-#pragma config BOREN = SBORDIS
-#pragma config BORV = 190
-
-
-#pragma config WDTEN = OFF
-#pragma config WDTPS = 32768
-
-
-#pragma config CCP2MX = PORTC1
-#pragma config PBADEN = ON
-#pragma config CCP3MX = PORTB5
-#pragma config HFOFST = ON
-#pragma config T3CMX = PORTC0
-#pragma config P2BMX = PORTB5
-#pragma config MCLRE = EXTMCLR
-
-
-#pragma config STVREN = ON
-#pragma config LVP = OFF
-#pragma config XINST = OFF
-#pragma config DEBUG = OFF
-
-
-#pragma config CP0 = OFF
-#pragma config CP1 = OFF
-#pragma config CP2 = OFF
-#pragma config CP3 = OFF
-
-
-#pragma config CPB = OFF
-#pragma config CPD = OFF
-
-
-#pragma config WRT0 = OFF
-#pragma config WRT1 = OFF
-#pragma config WRT2 = OFF
-#pragma config WRT3 = OFF
-
-
-#pragma config WRTC = OFF
-#pragma config WRTB = OFF
-#pragma config WRTD = OFF
-
-
-#pragma config EBTR0 = OFF
-#pragma config EBTR1 = OFF
-#pragma config EBTR2 = OFF
-#pragma config EBTR3 = OFF
-
-
-#pragma config EBTRB = OFF
+# 1 "mcc_generated_files/tmr0.c"
 
 # 26 "C:\Program Files (x86)\Microchip\xc8\v1.36\include\htc.h"
 extern const char __xc8_OPTIM_SPEED;
@@ -8875,12 +8813,6 @@ extern __nonreentrant void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __nonreentrant void _delay3(unsigned char);
 
-# 73 "mcc_generated_files/pin_manager.h"
-void PIN_MANAGER_Initialize (void);
-
-# 85
-void PIN_MANAGER_IOC(void);
-
 # 13 "C:\Program Files (x86)\Microchip\xc8\v1.36\include\stdint.h"
 typedef signed char int8_t;
 
@@ -8974,17 +8906,26 @@ typedef uint16_t uintptr_t;
 # 12 "C:\Program Files (x86)\Microchip\xc8\v1.36\include\stdbool.h"
 typedef unsigned char bool;
 
-# 110 "mcc_generated_files/interrupt_manager.h"
-void INTERRUPT_Initialize (void);
+# 100 "mcc_generated_files/tmr0.h"
+void TMR0_Initialize(void);
 
-# 122
-void interrupt INTERRUPT_InterruptManager (void);
+# 129
+void TMR0_StartTimer(void);
 
-# 96 "mcc_generated_files/epwm1.h"
-void EPWM1_Initialize(void);
+# 161
+void TMR0_StopTimer(void);
 
-# 122
-void EPWM1_LoadDutyValue(uint16_t dutyValue);
+# 196
+uint8_t TMR0_Read8bitTimer(void);
+
+# 235
+void TMR0_Write8bitTimer(uint8_t timerVal);
+
+# 271
+void TMR0_Reload8bit(void);
+
+# 290
+void TMR0_ISR(void);
 
 # 4 "C:\Program Files (x86)\Microchip\xc8\v1.36\include\__size_t.h"
 typedef unsigned size_t;
@@ -9049,75 +8990,83 @@ extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupport
 extern int sprintf(char *, const char *, ...);
 extern int printf(const char *, ...);
 
-# 78 "mcc_generated_files/eusart1.h"
-extern volatile uint8_t eusart1TxBufferRemaining;
-extern volatile uint8_t eusart1RxCount;
-extern volatile uint8_t uartState=0;
+# 58 "mcc_generated_files/tmr0.c"
+volatile uint8_t timer0ReloadVal8bit;
 
-# 109
-void EUSART1_Initialize(void);
-
-# 158
-uint8_t EUSART1_Read(void);
-
-# 183
-void EUSART1_Write(uint8_t txData);
-
-# 204
-void EUSART1_Transmit_ISR(void);
-
-# 225
-void EUSART1_Receive_ISR(void);
-
-# 103 "mcc_generated_files/tmr2.h"
-void TMR2_Initialize(void);
-
-# 132
-void TMR2_StartTimer(void);
-
-# 164
-void TMR2_StopTimer(void);
-
-# 199
-uint8_t TMR2_ReadTimer(void);
-
-# 238
-void TMR2_WriteTimer(uint8_t timerVal);
-
-# 290
-void TMR2_LoadPeriodRegister(uint8_t periodVal);
-
-# 325
-bool TMR2_HasOverflowOccured(void);
-
-# 71 "mcc_generated_files/mcc.h"
-void SYSTEM_Initialize(void);
-
-# 84
-void OSCILLATOR_Initialize(void);
-
-# 112 "mcc_generated_files/mcc.c"
-void SYSTEM_Initialize(void)
+# 65
+void TMR0_Initialize(void)
 {
 
-INTERRUPT_Initialize();
-PIN_MANAGER_Initialize();
-OSCILLATOR_Initialize();
-EPWM1_Initialize();
-TMR2_Initialize();
-TMR0_Initialize();
-EUSART1_Initialize();
+
+
+T0CON = 0xFF;
+
+
+TMR0H = 0x00;
+
+
+TMR0L = 0x00;
+
+
+timer0ReloadVal8bit = 0;
+
+
+INTCONbits.TMR0IF = 0;
+
+
+INTCONbits.TMR0IE = 1;
+
+
+TMR0_StartTimer();
 }
 
-void OSCILLATOR_Initialize(void)
+void TMR0_StartTimer(void)
 {
 
-OSCCON = 0x70;
+T0CONbits.TMR0ON = 1;
+}
 
-OSCCON2 = 0x04;
+void TMR0_StopTimer(void)
+{
 
-OSCTUNE = 0x40;
+T0CONbits.TMR0ON = 0;
+}
 
 
+uint8_t TMR0_Read8bitTimer(void)
+{
+uint8_t readVal;
+
+
+readVal = TMR0L;
+
+return readVal;
+}
+
+void TMR0_Write8bitTimer(uint8_t timerVal)
+{
+
+TMR0L = timerVal;
+}
+
+void TMR0_Reload8bit(void)
+{
+
+TMR0L = timer0ReloadVal8bit;
+}
+
+
+void TMR0_ISR(void)
+{
+
+
+INTCONbits.TMR0IF = 0;
+
+
+TMR0L = timer0ReloadVal8bit;
+
+
+
+printf("ahoj\r\n");
 }
 

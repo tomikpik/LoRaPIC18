@@ -8990,20 +8990,21 @@ extern int printf(const char *, ...);
 # 78 "mcc_generated_files/eusart1.h"
 extern volatile uint8_t eusart1TxBufferRemaining;
 extern volatile uint8_t eusart1RxCount;
+extern volatile uint8_t uartState=0;
 
-# 107
+# 109
 void EUSART1_Initialize(void);
 
-# 156
+# 158
 uint8_t EUSART1_Read(void);
 
-# 181
+# 183
 void EUSART1_Write(uint8_t txData);
 
-# 202
+# 204
 void EUSART1_Transmit_ISR(void);
 
-# 223
+# 225
 void EUSART1_Receive_ISR(void);
 
 # 103 "mcc_generated_files/tmr2.h"

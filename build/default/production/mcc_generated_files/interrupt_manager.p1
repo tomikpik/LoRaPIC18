@@ -58,9 +58,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S507 . . . ]
 "8862
 [v _PIR1bits `VS507 ~T0 @X0 0 e@3998 ]
-"202 mcc_generated_files/eusart1.h
+"204 mcc_generated_files/eusart1.h
 [v _EUSART1_Transmit_ISR `(v ~T0 @X0 0 ef ]
-"223
+"225
 [v _EUSART1_Receive_ISR `(v ~T0 @X0 0 ef ]
 [; ;interrupt_manager.h: 110: void INTERRUPT_Initialize (void);
 [; ;interrupt_manager.h: 122: void interrupt INTERRUPT_InterruptManager (void);
@@ -7154,11 +7154,17 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stdio.h: 195: extern int printf(const char *, ...);
 [; ;eusart1.h: 78: extern volatile uint8_t eusart1TxBufferRemaining;
 [; ;eusart1.h: 79: extern volatile uint8_t eusart1RxCount;
-[; ;eusart1.h: 107: void EUSART1_Initialize(void);
-[; ;eusart1.h: 156: uint8_t EUSART1_Read(void);
-[; ;eusart1.h: 181: void EUSART1_Write(uint8_t txData);
-[; ;eusart1.h: 202: void EUSART1_Transmit_ISR(void);
-[; ;eusart1.h: 223: void EUSART1_Receive_ISR(void);
+"80 mcc_generated_files/eusart1.h
+[v _uartState `Vuc ~T0 @X0 1 e ]
+[i _uartState
+-> -> 0 `i `uc
+]
+[; ;eusart1.h: 80: extern volatile uint8_t uartState=0;
+[; ;eusart1.h: 109: void EUSART1_Initialize(void);
+[; ;eusart1.h: 158: uint8_t EUSART1_Read(void);
+[; ;eusart1.h: 183: void EUSART1_Write(uint8_t txData);
+[; ;eusart1.h: 204: void EUSART1_Transmit_ISR(void);
+[; ;eusart1.h: 225: void EUSART1_Receive_ISR(void);
 [; ;tmr2.h: 103: void TMR2_Initialize(void);
 [; ;tmr2.h: 132: void TMR2_StartTimer(void);
 [; ;tmr2.h: 164: void TMR2_StopTimer(void);

@@ -48,12 +48,14 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
   Section: Included Files
 */
 #include "eusart1.h"
+#include <string.h>
+
 
 /**
   Section: Macro Declarations
 */
-#define EUSART1_TX_BUFFER_SIZE 64
-#define EUSART1_RX_BUFFER_SIZE 64
+#define EUSART1_TX_BUFFER_SIZE 128
+#define EUSART1_RX_BUFFER_SIZE 128
 
 /**
   Section: Global Variables
@@ -166,7 +168,7 @@ void putch(char txData)
 
 void EUSART1_Transmit_ISR(void)
 {
-
+    
     // add your EUSART1 interrupt custom code
     if(sizeof(eusart1TxBuffer) > eusart1TxBufferRemaining)
     {
@@ -193,6 +195,8 @@ void EUSART1_Receive_ISR(void)
         RCSTA1bits.CREN = 1;
     }
 
+    
+   
     // buffer overruns are ignored
     eusart1RxBuffer[eusart1RxHead++] = RCREG1;
     if(sizeof(eusart1RxBuffer) <= eusart1RxHead)
@@ -200,6 +204,10 @@ void EUSART1_Receive_ISR(void)
         eusart1RxHead = 0;
     }
     eusart1RxCount++;
+    
+    
+    
+    
 }
 /**
   End of File

@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project>
-  <executable name="dist/default/production\TestProject.X.production.hex">
+  <executable name="dist/default/production\LoRaPIC18.X.production.hex">
     <memory name="program">
       <units>bytes</units>
       <length>65536</length>
-      <used>1310</used>
-      <free>64226</free>
+      <used>2586</used>
+      <free>62950</free>
     </memory>
     <memory name="data">
       <units>bytes</units>
       <length>3896</length>
-      <used>170</used>
-      <free>3726</free>
+      <used>331</used>
+      <free>3565</free>
     </memory>
   </executable>
 </project>
