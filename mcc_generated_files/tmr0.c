@@ -51,11 +51,12 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 #include <xc.h>
 #include "tmr0.h"
 #include <stdio.h>
-
+#include "./epwm1.h"
 /**
   Section: Global Variables Definitions
 */
 volatile uint8_t timer0ReloadVal8bit;
+volatile uint8_t val;
 
 /**
   Section: TMR0 APIs
@@ -64,19 +65,20 @@ volatile uint8_t timer0ReloadVal8bit;
 
 void TMR0_Initialize(void)
 {
+    val=0;
     // Set TMR0 to the options selected in the User Interface
 
-    // T0PS 1:256; T08BIT 8-bit; T0SE Increment_hi_lo; T0CS T0CKI; TMR0ON enabled; PSA not_assigned; 
-    T0CON = 0xFF;
+    // T0PS 1:256; T08BIT 8-bit; T0SE Increment_hi_lo; T0CS FOSC/4; TMR0ON enabled; PSA assigned; 
+    T0CON = 0xD7;
 
-    // TMR0H 0; 
-    TMR0H = 0x00;
+    // TMR0H 11; 
+    TMR0H = 0x0B;
 
-    // TMR0L 0; 
-    TMR0L = 0x00;
+    // TMR0L 220; 
+    TMR0L = 0xDC;
 
     // Load TMR0 value to the 8-bit reload variable
-    timer0ReloadVal8bit  = 0;
+    timer0ReloadVal8bit  = 220;
 
     // Clear Interrupt flag before enabling the interrupt
     INTCONbits.TMR0IF = 0;
@@ -133,11 +135,21 @@ void TMR0_ISR(void)
     // reload TMR0
     TMR0L = timer0ReloadVal8bit;
 
+    // ticker function call;
+    // ticker is 1 -> Callback function gets called every time this ISR executes
+    TMR0_CallBack();
 
     // add your TMR0 interrupt custom code
-    printf("ahoj\r\n");
 }
 
+void TMR0_CallBack(void)
+{
+    // Add your custom callback code here
+    // this code executes every 1 TMR0 periods
+    val+=100;
+    if(val>1000)val=0;
+    EPWM1_LoadDutyValue((uint16_t) val);
+}
 /**
   End of File
 */

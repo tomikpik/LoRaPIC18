@@ -9007,6 +9007,30 @@ void EPWM1_Initialize(void);
 # 122
 void EPWM1_LoadDutyValue(uint16_t dutyValue);
 
+# 106 "mcc_generated_files/tmr0.h"
+void TMR0_Initialize(void);
+
+# 135
+void TMR0_StartTimer(void);
+
+# 167
+void TMR0_StopTimer(void);
+
+# 203
+uint16_t TMR0_Read16bitTimer(void);
+
+# 242
+void TMR0_Write16bitTimer(uint16_t timerVal);
+
+# 278
+void TMR0_Reload16bit(void);
+
+# 296
+void TMR0_ISR(void);
+
+# 314
+void TMR0_CallBack(void);
+
 # 14 "C:\Program Files (x86)\Microchip\xc8\v1.36\include\string.h"
 extern void * memcpy(void *, const void *, size_t);
 extern void * memmove(void *, const void *, size_t);
@@ -9039,11 +9063,12 @@ extern char * strichr(const char *, int);
 extern char * strrchr(const char *, int);
 extern char * strrichr(const char *, int);
 
-# 27 "main.c"
+# 28 "main.c"
 void main(void) {
 SYSTEM_Initialize();
 
 (INTCONbits.GIE = 1);
+
 
 (INTCONbits.PEIE = 1);
 
@@ -9078,13 +9103,13 @@ for(uint8_t i=0;i<10;i++) { _delay((unsigned long)((10)*(64000000/4000.0))); }
 printf("radio set crc on\r\n");
 for(uint8_t i=0;i<10;i++) { _delay((unsigned long)((10)*(64000000/4000.0))); }
 
-# 76
+# 78
 uint16_t val=0;
 uint16_t sleep=0;
 int a =0;
 while(1){
 
-# 92
+# 94
 _delay((unsigned long)((10)*(64000000/4000.0)));
 _delay((unsigned long)((10)*(64000000/4000.0)));
 _delay((unsigned long)((10)*(64000000/4000.0)));

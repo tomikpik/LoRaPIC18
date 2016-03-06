@@ -1,6 +1,6 @@
 Version 3.2 HI-TECH Software Intermediate Code
 [p mainexit ]
-"28 main.c
+"29 main.c
 [v _SYSTEM_Initialize `(i ~T0 @X0 0 ef ]
 "16653 C:\Program Files (x86)\Microchip\xc8\v1.36\include\pic18f26k22.h
 [s S1056 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -7125,6 +7125,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pin_manager.h: 85: void PIN_MANAGER_IOC(void);
 [; ;epwm1.h: 96: void EPWM1_Initialize(void);
 [; ;epwm1.h: 122: void EPWM1_LoadDutyValue(uint16_t dutyValue);
+[; ;tmr0.h: 106: void TMR0_Initialize(void);
+[; ;tmr0.h: 135: void TMR0_StartTimer(void);
+[; ;tmr0.h: 167: void TMR0_StopTimer(void);
+[; ;tmr0.h: 203: uint16_t TMR0_Read16bitTimer(void);
+[; ;tmr0.h: 242: void TMR0_Write16bitTimer(uint16_t timerVal);
+[; ;tmr0.h: 278: void TMR0_Reload16bit(void);
+[; ;tmr0.h: 296: void TMR0_ISR(void);
+[; ;tmr0.h: 314: void TMR0_CallBack(void);
 [; ;string.h: 14: extern void * memcpy(void *, const void *, size_t);
 [; ;string.h: 15: extern void * memmove(void *, const void *, size_t);
 [; ;string.h: 16: extern void * memset(void *, int, size_t);
@@ -7151,29 +7159,29 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;string.h: 56: extern char * strichr(const char *, int);
 [; ;string.h: 57: extern char * strrchr(const char *, int);
 [; ;string.h: 58: extern char * strrichr(const char *, int);
-"27 main.c
+"28 main.c
 [v _main `(v ~T0 @X0 1 ef ]
 {
-[; ;main.c: 27: void main(void) {
+[; ;main.c: 28: void main(void) {
 [e :U _main ]
 [f ]
-[; ;main.c: 28: SYSTEM_Initialize();
-"28
+[; ;main.c: 29: SYSTEM_Initialize();
+"29
 [e ( _SYSTEM_Initialize ..  ]
-[; ;main.c: 30: (INTCONbits.GIE = 1);
-"30
+[; ;main.c: 31: (INTCONbits.GIE = 1);
+"31
 [e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
-[; ;main.c: 32: (INTCONbits.PEIE = 1);
-"32
-[e = . . _INTCONbits 1 6 -> -> 1 `i `uc ]
-[; ;main.c: 34: _delay((unsigned long)((10)*(64000000/4000.0)));
+[; ;main.c: 34: (INTCONbits.PEIE = 1);
 "34
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 36: printf("sys reset\r\n");
+[e = . . _INTCONbits 1 6 -> -> 1 `i `uc ]
+[; ;main.c: 36: _delay((unsigned long)((10)*(64000000/4000.0)));
 "36
+[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
+[; ;main.c: 38: printf("sys reset\r\n");
+"38
 [e ( _printf :s 1C ]
-[; ;main.c: 37: for(uint8_t i=0;i<10;i++) { _delay((unsigned long)((10)*(64000000/4000.0))); }
-"37
+[; ;main.c: 39: for(uint8_t i=0;i<10;i++) { _delay((unsigned long)((10)*(64000000/4000.0))); }
+"39
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
@@ -7187,11 +7195,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $ < -> _i `i -> 10 `i 1086  ]
 [e :U 1087 ]
 }
-[; ;main.c: 38: printf("sys get ver\r\n");
-"38
+[; ;main.c: 40: printf("sys get ver\r\n");
+"40
 [e ( _printf :s 2C ]
-[; ;main.c: 39: for(uint8_t i=0;i<10;i++) { _delay((unsigned long)((10)*(64000000/4000.0))); }
-"39
+[; ;main.c: 41: for(uint8_t i=0;i<10;i++) { _delay((unsigned long)((10)*(64000000/4000.0))); }
+"41
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
@@ -7205,11 +7213,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $ < -> _i `i -> 10 `i 1089  ]
 [e :U 1090 ]
 }
-[; ;main.c: 40: printf("radio get sf\r\n");
-"40
+[; ;main.c: 42: printf("radio get sf\r\n");
+"42
 [e ( _printf :s 3C ]
-[; ;main.c: 41: for(uint8_t i=0;i<10;i++) { _delay((unsigned long)((10)*(64000000/4000.0))); }
-"41
+[; ;main.c: 43: for(uint8_t i=0;i<10;i++) { _delay((unsigned long)((10)*(64000000/4000.0))); }
+"43
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
@@ -7223,11 +7231,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $ < -> _i `i -> 10 `i 1092  ]
 [e :U 1093 ]
 }
-[; ;main.c: 42: printf("radio get bw\r\n");
-"42
+[; ;main.c: 44: printf("radio get bw\r\n");
+"44
 [e ( _printf :s 4C ]
-[; ;main.c: 43: for(uint8_t i=0;i<10;i++) { _delay((unsigned long)((10)*(64000000/4000.0))); }
-"43
+[; ;main.c: 45: for(uint8_t i=0;i<10;i++) { _delay((unsigned long)((10)*(64000000/4000.0))); }
+"45
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
@@ -7241,11 +7249,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $ < -> _i `i -> 10 `i 1095  ]
 [e :U 1096 ]
 }
-[; ;main.c: 44: printf("radio get cr\r\n");
-"44
+[; ;main.c: 46: printf("radio get cr\r\n");
+"46
 [e ( _printf :s 5C ]
-[; ;main.c: 45: for(uint8_t i=0;i<10;i++) { _delay((unsigned long)((10)*(64000000/4000.0))); }
-"45
+[; ;main.c: 47: for(uint8_t i=0;i<10;i++) { _delay((unsigned long)((10)*(64000000/4000.0))); }
+"47
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
@@ -7259,11 +7267,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $ < -> _i `i -> 10 `i 1098  ]
 [e :U 1099 ]
 }
-[; ;main.c: 46: printf("radio get prlen\r\n");
-"46
+[; ;main.c: 48: printf("radio get prlen\r\n");
+"48
 [e ( _printf :s 6C ]
-[; ;main.c: 47: for(uint8_t i=0;i<10;i++) { _delay((unsigned long)((10)*(64000000/4000.0))); }
-"47
+[; ;main.c: 49: for(uint8_t i=0;i<10;i++) { _delay((unsigned long)((10)*(64000000/4000.0))); }
+"49
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
@@ -7277,11 +7285,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $ < -> _i `i -> 10 `i 1101  ]
 [e :U 1102 ]
 }
-[; ;main.c: 48: printf("radio get pwr\r\n");
-"48
+[; ;main.c: 50: printf("radio get pwr\r\n");
+"50
 [e ( _printf :s 7C ]
-[; ;main.c: 49: for(uint8_t i=0;i<10;i++) { _delay((unsigned long)((10)*(64000000/4000.0))); }
-"49
+[; ;main.c: 51: for(uint8_t i=0;i<10;i++) { _delay((unsigned long)((10)*(64000000/4000.0))); }
+"51
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
@@ -7295,11 +7303,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $ < -> _i `i -> 10 `i 1104  ]
 [e :U 1105 ]
 }
-[; ;main.c: 51: printf("mac pause\r\n");
-"51
+[; ;main.c: 53: printf("mac pause\r\n");
+"53
 [e ( _printf :s 8C ]
-[; ;main.c: 52: for(uint8_t i=0;i<10;i++) { _delay((unsigned long)((10)*(64000000/4000.0))); }
-"52
+[; ;main.c: 54: for(uint8_t i=0;i<10;i++) { _delay((unsigned long)((10)*(64000000/4000.0))); }
+"54
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
@@ -7313,11 +7321,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $ < -> _i `i -> 10 `i 1107  ]
 [e :U 1108 ]
 }
-[; ;main.c: 54: printf("radio set pwr -3\r\n");
-"54
+[; ;main.c: 56: printf("radio set pwr -3\r\n");
+"56
 [e ( _printf :s 9C ]
-[; ;main.c: 55: for(uint8_t i=0;i<10;i++) { _delay((unsigned long)((10)*(64000000/4000.0))); }
-"55
+[; ;main.c: 57: for(uint8_t i=0;i<10;i++) { _delay((unsigned long)((10)*(64000000/4000.0))); }
+"57
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
@@ -7331,11 +7339,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $ < -> _i `i -> 10 `i 1110  ]
 [e :U 1111 ]
 }
-[; ;main.c: 56: printf("radio set bw 500\r\n");
-"56
+[; ;main.c: 58: printf("radio set bw 500\r\n");
+"58
 [e ( _printf :s 10C ]
-[; ;main.c: 57: for(uint8_t i=0;i<10;i++) { _delay((unsigned long)((10)*(64000000/4000.0))); }
-"57
+[; ;main.c: 59: for(uint8_t i=0;i<10;i++) { _delay((unsigned long)((10)*(64000000/4000.0))); }
+"59
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
@@ -7349,11 +7357,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $ < -> _i `i -> 10 `i 1113  ]
 [e :U 1114 ]
 }
-[; ;main.c: 58: printf("radio set sf sf7\r\n");
-"58
+[; ;main.c: 60: printf("radio set sf sf7\r\n");
+"60
 [e ( _printf :s 11C ]
-[; ;main.c: 59: for(uint8_t i=0;i<10;i++) { _delay((unsigned long)((10)*(64000000/4000.0))); }
-"59
+[; ;main.c: 61: for(uint8_t i=0;i<10;i++) { _delay((unsigned long)((10)*(64000000/4000.0))); }
+"61
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
@@ -7367,11 +7375,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $ < -> _i `i -> 10 `i 1116  ]
 [e :U 1117 ]
 }
-[; ;main.c: 60: printf("radio set cr 4/5\r\n");
-"60
+[; ;main.c: 62: printf("radio set cr 4/5\r\n");
+"62
 [e ( _printf :s 12C ]
-[; ;main.c: 61: for(uint8_t i=0;i<10;i++) { _delay((unsigned long)((10)*(64000000/4000.0))); }
-"61
+[; ;main.c: 63: for(uint8_t i=0;i<10;i++) { _delay((unsigned long)((10)*(64000000/4000.0))); }
+"63
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
@@ -7385,11 +7393,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $ < -> _i `i -> 10 `i 1119  ]
 [e :U 1120 ]
 }
-[; ;main.c: 62: printf("radio set crc on\r\n");
-"62
+[; ;main.c: 64: printf("radio set crc on\r\n");
+"64
 [e ( _printf :s 13C ]
-[; ;main.c: 63: for(uint8_t i=0;i<10;i++) { _delay((unsigned long)((10)*(64000000/4000.0))); }
-"63
+[; ;main.c: 65: for(uint8_t i=0;i<10;i++) { _delay((unsigned long)((10)*(64000000/4000.0))); }
+"65
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
@@ -7403,28 +7411,22 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $ < -> _i `i -> 10 `i 1122  ]
 [e :U 1123 ]
 }
-"76
-[v _val `ui ~T0 @X0 1 a ]
-[; ;main.c: 76: uint16_t val=0;
-[e = _val -> -> 0 `i `ui ]
-"77
-[v _sleep `ui ~T0 @X0 1 a ]
-[; ;main.c: 77: uint16_t sleep=0;
-[e = _sleep -> -> 0 `i `ui ]
 "78
-[v _a `i ~T0 @X0 1 a ]
-[; ;main.c: 78: int a =0;
-[e = _a -> 0 `i ]
-[; ;main.c: 79: while(1){
+[v _val `ui ~T0 @X0 1 a ]
+[; ;main.c: 78: uint16_t val=0;
+[e = _val -> -> 0 `i `ui ]
 "79
+[v _sleep `ui ~T0 @X0 1 a ]
+[; ;main.c: 79: uint16_t sleep=0;
+[e = _sleep -> -> 0 `i `ui ]
+"80
+[v _a `i ~T0 @X0 1 a ]
+[; ;main.c: 80: int a =0;
+[e = _a -> 0 `i ]
+[; ;main.c: 81: while(1){
+"81
 [e :U 1126 ]
 {
-[; ;main.c: 92: _delay((unsigned long)((10)*(64000000/4000.0)));
-"92
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 93: _delay((unsigned long)((10)*(64000000/4000.0)));
-"93
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
 [; ;main.c: 94: _delay((unsigned long)((10)*(64000000/4000.0)));
 "94
 [e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
@@ -7434,21 +7436,27 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 96: _delay((unsigned long)((10)*(64000000/4000.0)));
 "96
 [e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 97: printf("radio tx 1000000000000000000000%04X%d\r\n",val++,uartState);
+[; ;main.c: 97: _delay((unsigned long)((10)*(64000000/4000.0)));
 "97
+[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
+[; ;main.c: 98: _delay((unsigned long)((10)*(64000000/4000.0)));
+"98
+[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
+[; ;main.c: 99: printf("radio tx 1000000000000000000000%04X%d\r\n",val++,uartState);
+"99
 [e ( _printf , , (. :s 14C ++ _val -> -> 1 `i `ui -> _uartState `i ]
-"101
+"103
 }
 [e :U 1125 ]
-"79
+"81
 [e $U 1126  ]
 [e :U 1127 ]
-[; ;main.c: 101: }
-[; ;main.c: 104: return;
-"104
+[; ;main.c: 103: }
+[; ;main.c: 106: return;
+"106
 [e $UE 1085  ]
-[; ;main.c: 105: }
-"105
+[; ;main.c: 107: }
+"107
 [e :UE 1085 ]
 }
 [p f _printf 10518660 ]

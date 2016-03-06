@@ -63,6 +63,12 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 
 
 /**
+  Section: Macro Declarations
+*/
+
+#define TMR0_INTERRUPT_TICKER_FACTOR    1
+
+/**
   Section: TMR0 APIs
 */
 
@@ -160,12 +166,13 @@ void TMR0_StartTimer(void);
 */
 void TMR0_StopTimer(void);
 
+
 /**
   @Summary
-    Reads the 8 bits TMR0 register value.
+    Reads the 16 bits TMR0 register value.
 
   @Description
-    This function reads the 8 bits TMR0 register value and return it.
+    This function reads the 16 bits TMR0 register value and return it.
 
   @Preconditions
     Initialize  the TMR0 before calling this function.
@@ -174,7 +181,7 @@ void TMR0_StopTimer(void);
     None
 
   @Returns
-    This function returns the 8 bits value of TMR0 register.
+    This function returns the 16 bits value of TMR0 register.
 
   @Example
     <code>
@@ -184,23 +191,23 @@ void TMR0_StopTimer(void);
     TMR0_StartTimer();
 
     // Read the current value of TMR0
-    if(0 == TMR0_Read8bitTimer())
+    if(0 == TMR0_Read16bitTimer())
     {
         // Do something else...
 
         // Reload the TMR value
-        TMR0_Reload8bit();
+        TMR0_Reload();
     }
     </code>
 */
-uint8_t TMR0_Read8bitTimer(void);
+uint16_t TMR0_Read16bitTimer(void);
 
 /**
   @Summary
-    Writes the 8 bits value to TMR0 register.
+    Writes the 16 bits value to TMR0 register.
 
   @Description
-    This function writes the 8 bits value to TMR0 register.
+    This function writes the 16 bits value to TMR0 register.
     This function must be called after the initialization of TMR0.
 
   @Preconditions
@@ -214,32 +221,32 @@ uint8_t TMR0_Read8bitTimer(void);
 
   @Example
     <code>
-    #define PERIOD 0x80
-    #define ZERO   0x00
+    #define PERIOD 0x8000
+    #define ZERO   0x0000
 
     while(1)
     {
-        // Read the TMR0 register
-        if(ZERO == TMR0_Read8bitTimer())
+        //Read the TMR0 register
+        if(ZERO == TMR0_Read16bitTimer())
         {
             // Do something else...
 
             // Write the TMR0 register
-            TMR0_Write8bitTimer(PERIOD);
+            TMR0_Write16bitTimer(PERIOD);
         }
 
         // Do something else...
     }
     </code>
 */
-void TMR0_Write8bitTimer(uint8_t timerVal);
+void TMR0_Write16bitTimer(uint16_t timerVal);
 
 /**
   @Summary
-    Reload the 8 bits value to TMR0 register.
+    Reload the 16 bits value to TMR0 register.
 
   @Description
-    This function reloads the 8 bit value to TMR0 register.
+    This function reloads the 16 bit value to TMR0 register.
     This function must be called to write initial value into TMR0 register.
 
   @Preconditions
@@ -263,13 +270,12 @@ void TMR0_Write8bitTimer(uint8_t timerVal);
             TMR0IF = 0;
 
             // Reload the initial value of TMR0
-            TMR0_Reload8bit();
+            TMR0_Reload16bit();
         }
     }
     </code>
 */
-void TMR0_Reload8bit(void);
-
+void TMR0_Reload16bit(void);
 
 /**
   @Summary
@@ -289,6 +295,23 @@ void TMR0_Reload8bit(void);
  */
 void TMR0_ISR(void);
 
+/**
+  @Summary
+    CallBack function
+
+  @Description
+    This function is called from the timer ISR. User can write your code in this function.
+
+  @Preconditions
+    Initialize  the TMR0 module with interrupt before calling this function.
+
+  @Param
+    None
+
+  @Returns
+    None
+*/
+void TMR0_CallBack(void);
 
 #ifdef __cplusplus  // Provide C++ Compatibility
 

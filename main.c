@@ -21,6 +21,7 @@
 #include "mcc_generated_files/interrupt_manager.h"
 #include "mcc_generated_files/pin_manager.h"
 #include "mcc_generated_files/epwm1.h"
+#include "mcc_generated_files/tmr0.h"
 #include <string.h>
 
 
@@ -28,6 +29,7 @@ void main(void) {
     SYSTEM_Initialize();
  	
     INTERRUPT_GlobalInterruptEnable();
+    
 								
 	INTERRUPT_PeripheralInterruptEnable();
                                 
