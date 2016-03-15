@@ -50,23 +50,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S510 . . . ]
 "8938
 [v _IPR1bits `VS510 ~T0 @X0 0 e@3999 ]
-"16653
-[s S1056 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S1056 . RBIF INT0IF TMR0IF RBIE INT0IE TMR0IE PEIE_GIEL GIE_GIEH ]
-"16663
-[s S1057 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S1057 . . INT0F T0IF . INT0E T0IE PEIE GIE ]
-"16673
-[s S1058 :6 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S1058 . . GIEL GIEH ]
-"16652
-[u S1055 `S1056 1 `S1057 1 `S1058 1 ]
-[n S1055 . . . . ]
-"16679
-[v _INTCONbits `VS1055 ~T0 @X0 0 e@4082 ]
-"72 mcc_generated_files/interrupt_manager.c
-[v _TMR0_ISR `(i ~T0 @X0 0 ef ]
-"8770 C:\Program Files (x86)\Microchip\xc8\v1.36\include\pic18f26k22.h
+"8770
 [s S505 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S505 . TMR1IE TMR2IE CCP1IE SSP1IE TX1IE RC1IE ADIE ]
 "8779
@@ -88,9 +72,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S507 . . . ]
 "8862
 [v _PIR1bits `VS507 ~T0 @X0 0 e@3998 ]
-"204 mcc_generated_files/eusart1.h
+"206 mcc_generated_files/eusart1.h
 [v _EUSART1_Transmit_ISR `(v ~T0 @X0 0 ef ]
-"225
+"227
 [v _EUSART1_Receive_ISR `(v ~T0 @X0 0 ef ]
 [; ;interrupt_manager.h: 110: void INTERRUPT_Initialize (void);
 [; ;interrupt_manager.h: 122: void interrupt INTERRUPT_InterruptManager (void);
@@ -7184,17 +7168,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stdio.h: 195: extern int printf(const char *, ...);
 [; ;eusart1.h: 78: extern volatile uint8_t eusart1TxBufferRemaining;
 [; ;eusart1.h: 79: extern volatile uint8_t eusart1RxCount;
-"80 mcc_generated_files/eusart1.h
-[v _uartState `Vuc ~T0 @X0 1 e ]
-[i _uartState
--> -> 0 `i `uc
-]
-[; ;eusart1.h: 80: extern volatile uint8_t uartState=0;
-[; ;eusart1.h: 109: void EUSART1_Initialize(void);
-[; ;eusart1.h: 158: uint8_t EUSART1_Read(void);
-[; ;eusart1.h: 183: void EUSART1_Write(uint8_t txData);
-[; ;eusart1.h: 204: void EUSART1_Transmit_ISR(void);
-[; ;eusart1.h: 225: void EUSART1_Receive_ISR(void);
+[; ;eusart1.h: 81: extern volatile uint8_t uartState;
+[; ;eusart1.h: 82: extern volatile char line[128];
+[; ;eusart1.h: 111: void EUSART1_Initialize(void);
+[; ;eusart1.h: 160: uint8_t EUSART1_Read(void);
+[; ;eusart1.h: 185: void EUSART1_Write(uint8_t txData);
+[; ;eusart1.h: 206: void EUSART1_Transmit_ISR(void);
+[; ;eusart1.h: 227: void EUSART1_Receive_ISR(void);
+[; ;eusart1.h: 231: int read_line(void);
 [; ;tmr2.h: 103: void TMR2_Initialize(void);
 [; ;tmr2.h: 132: void TMR2_StartTimer(void);
 [; ;tmr2.h: 164: void TMR2_StopTimer(void);
@@ -7237,60 +7218,45 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;interrupt_manager.c: 68: {
 [e :U _INTERRUPT_InterruptManager ]
 [f ]
-[; ;interrupt_manager.c: 70: if(INTCONbits.TMR0IE == 1 && INTCONbits.TMR0IF == 1)
-"70
-[e $ ! && == -> . . _INTCONbits 0 5 `i -> 1 `i == -> . . _INTCONbits 0 2 `i -> 1 `i 1087  ]
-[; ;interrupt_manager.c: 71: {
-"71
-{
-[; ;interrupt_manager.c: 72: TMR0_ISR();
-"72
-[e ( _TMR0_ISR ..  ]
-"73
-}
-[; ;interrupt_manager.c: 73: }
-[e $U 1088  ]
-"74
-[e :U 1087 ]
-[; ;interrupt_manager.c: 74: else if(PIE1bits.TX1IE == 1 && PIR1bits.TX1IF == 1)
-[e $ ! && == -> . . _PIE1bits 0 4 `i -> 1 `i == -> . . _PIR1bits 0 4 `i -> 1 `i 1089  ]
-[; ;interrupt_manager.c: 75: {
-"75
-{
-[; ;interrupt_manager.c: 76: EUSART1_Transmit_ISR();
-"76
-[e ( _EUSART1_Transmit_ISR ..  ]
+[; ;interrupt_manager.c: 77: if(PIE1bits.TX1IE == 1 && PIR1bits.TX1IF == 1)
 "77
-}
-[; ;interrupt_manager.c: 77: }
-[e $U 1090  ]
+[e $ ! && == -> . . _PIE1bits 0 4 `i -> 1 `i == -> . . _PIR1bits 0 4 `i -> 1 `i 1087  ]
+[; ;interrupt_manager.c: 78: {
 "78
-[e :U 1089 ]
-[; ;interrupt_manager.c: 78: else if(PIE1bits.RC1IE == 1 && PIR1bits.RC1IF == 1)
-[e $ ! && == -> . . _PIE1bits 0 5 `i -> 1 `i == -> . . _PIR1bits 0 5 `i -> 1 `i 1091  ]
-[; ;interrupt_manager.c: 79: {
+{
+[; ;interrupt_manager.c: 79: EUSART1_Transmit_ISR();
 "79
-{
-[; ;interrupt_manager.c: 80: EUSART1_Receive_ISR();
+[e ( _EUSART1_Transmit_ISR ..  ]
 "80
-[e ( _EUSART1_Receive_ISR ..  ]
+}
+[; ;interrupt_manager.c: 80: }
+[e $U 1088  ]
 "81
-}
-[; ;interrupt_manager.c: 81: }
-[e $U 1092  ]
+[e :U 1087 ]
+[; ;interrupt_manager.c: 81: else if(PIE1bits.RC1IE == 1 && PIR1bits.RC1IF == 1)
+[e $ ! && == -> . . _PIE1bits 0 5 `i -> 1 `i == -> . . _PIR1bits 0 5 `i -> 1 `i 1089  ]
+[; ;interrupt_manager.c: 82: {
 "82
-[e :U 1091 ]
-[; ;interrupt_manager.c: 82: else
-[; ;interrupt_manager.c: 83: {
-"83
 {
-"85
+[; ;interrupt_manager.c: 83: EUSART1_Receive_ISR();
+"83
+[e ( _EUSART1_Receive_ISR ..  ]
+"84
 }
-[e :U 1092 ]
+[; ;interrupt_manager.c: 84: }
+[e $U 1090  ]
+"85
+[e :U 1089 ]
+[; ;interrupt_manager.c: 85: else
+[; ;interrupt_manager.c: 86: {
+"86
+{
+"88
+}
 [e :U 1090 ]
 [e :U 1088 ]
-[; ;interrupt_manager.c: 85: }
-[; ;interrupt_manager.c: 86: }
-"86
+[; ;interrupt_manager.c: 88: }
+[; ;interrupt_manager.c: 89: }
+"89
 [e :UE 1086 ]
 }

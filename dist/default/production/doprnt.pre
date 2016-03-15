@@ -271,10 +271,9 @@ const static unsigned int hexpowers[] = {1, 0x10, 0x100, 0x1000,
 # 455
 int
 
-# 464
-printf(const char * f, ...)
+
+_doprnt(struct __prbuf * pb, register const char * f, register va_list ap)
 {
-va_list ap;
 
 # 499
 signed char c;
@@ -298,16 +297,13 @@ unsigned int val;
 unsigned len;
 const char * cp;
 
-
-*ap = __va_start();
-
-
+# 536
 while(c = *f++) {
 
 if(c != '%')
 
 {
-(putch(c) );
+if(pb->func) (pb->func(c)); else ((*pb->ptr++ = c));
 continue;
 }
 
@@ -362,11 +358,56 @@ flag |= 0x80;
 
 break;
 
-# 802
+
+
+
+case 's':
+
+# 734
+cp = (*(const char * *)__va_arg((*(const char * **)ap), (const char *)0));
+
+# 740
+if(!cp)
+cp = "(null)";
+
+
+
+len = 0;
+while(cp[len])
+len++;
+
+
+dostring:
+
+# 757
+if(width > len)
+width -= len;
+else
+width = 0;
+
+# 764
+while(width--)
+if(pb->func) (pb->func(' ')); else ((*pb->ptr++ = ' '));
+
+while(len--)
+if(pb->func) (pb->func(*cp++)); else ((*pb->ptr++ = *cp++));
+
+# 774
+continue;
+
+# 784
+case 'c':
+
+# 799
+c = (*(int *)__va_arg((*(int **)ap), (int)0));
+
+
 default:
 
-# 813
-continue;
+
+cp = (char *)&c;
+len = 1;
+goto dostring;
 
 # 822
 }
@@ -443,12 +484,12 @@ if(flag & 0x04) {
 
 
 if(flag & 0x03)
-(putch('-') );
+if(pb->func) (pb->func('-')); else ((*pb->ptr++ = '-'));
 
 # 1415
 if(width)
 do
-(putch('0') );
+if(pb->func) (pb->func('0')); else ((*pb->ptr++ = '0'));
 while(--width);
 
 } else
@@ -460,12 +501,12 @@ if(width
 # 1428
 )
 do
-(putch(' ') );
+if(pb->func) (pb->func(' ')); else ((*pb->ptr++ = ' '));
 while(--width);
 
 # 1438
 if(flag & 0x03)
-(putch('-') );
+if(pb->func) (pb->func('-')); else ((*pb->ptr++ = '-'));
 
 # 1469
 }
@@ -506,7 +547,7 @@ break;
 
 # 1523
 }
-(putch(c) );
+if(pb->func) (pb->func(c)); else ((*pb->ptr++ = c));
 }
 
 # 1533

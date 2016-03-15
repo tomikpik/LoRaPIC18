@@ -77,7 +77,9 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
  */
 extern volatile uint8_t eusart1TxBufferRemaining;
 extern volatile uint8_t eusart1RxCount;
-extern volatile uint8_t uartState=0;
+
+extern volatile uint8_t uartState;
+extern volatile char line[128];
 
 
 
@@ -223,6 +225,10 @@ void EUSART1_Transmit_ISR(void);
     None
 */
 void EUSART1_Receive_ISR(void);
+
+
+
+int read_line(void);
 
 #ifdef __cplusplus  // Provide C++ Compatibility
 

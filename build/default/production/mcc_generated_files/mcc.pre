@@ -9052,22 +9052,28 @@ extern int printf(const char *, ...);
 # 78 "mcc_generated_files/eusart1.h"
 extern volatile uint8_t eusart1TxBufferRemaining;
 extern volatile uint8_t eusart1RxCount;
-extern volatile uint8_t uartState=0;
 
-# 109
+extern volatile uint8_t uartState;
+extern volatile char line[128];
+
+# 111
 void EUSART1_Initialize(void);
 
-# 158
+# 160
 uint8_t EUSART1_Read(void);
 
-# 183
+# 185
 void EUSART1_Write(uint8_t txData);
 
-# 204
+# 206
 void EUSART1_Transmit_ISR(void);
 
-# 225
+# 227
 void EUSART1_Receive_ISR(void);
+
+
+
+int read_line(void);
 
 # 103 "mcc_generated_files/tmr2.h"
 void TMR2_Initialize(void);
@@ -9105,7 +9111,6 @@ PIN_MANAGER_Initialize();
 OSCILLATOR_Initialize();
 EPWM1_Initialize();
 TMR2_Initialize();
-TMR0_Initialize();
 EUSART1_Initialize();
 }
 

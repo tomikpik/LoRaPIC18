@@ -71,6 +71,12 @@ static uint8_t eusart1RxTail = 0;
 static uint8_t eusart1RxBuffer[EUSART1_RX_BUFFER_SIZE];
 volatile uint8_t eusart1RxCount;
 
+volatile uint8_t uartState;
+
+volatile char line[128];
+int index = 0;
+volatile uint8_t ready = 0;
+
 /**
   Section: EUSART1 APIs
 */
@@ -205,10 +211,49 @@ void EUSART1_Receive_ISR(void)
     }
     eusart1RxCount++;
     
+    int state = 0;
     
+    if(ready)return;
+    
+    while(eusart1RxCount>0){
+        line[index]=EUSART1_Read();        
+        if (line[index] == '\n'){
+            state=1;
+            break;
+        }
+        index++;        
+    }
+
+    if(state==1){
+        line[--index] = '\0';     
+        uartState=0;
+        if(!strcmp("radio_err",line)){
+            uartState=5;
+        } else if (strstr(line, "radio_rx") != NULL) {            
+            if(line[10]=='4'&&line[11]=='3'){ 
+                uartState=4;  
+            } else {
+                uartState=3;
+            }  
+        } else if (!strcmp(line, "radio_tx_ok") != NULL) {
+            uartState=1;
+        } else if (!strcmp(line, "ok") != NULL) {
+            uartState=1;
+        }
+        index=0;
+        ready=1;
+    }
     
     
 }
+
+int read_line(void){
+    while(ready!=1){
+    }
+    ready=0;
+    return 1;
+}
+
 /**
   End of File
 */

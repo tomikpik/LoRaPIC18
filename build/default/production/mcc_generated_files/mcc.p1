@@ -9,9 +9,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _EPWM1_Initialize `(v ~T0 @X0 0 ef ]
 "103 mcc_generated_files/tmr2.h
 [v _TMR2_Initialize `(v ~T0 @X0 0 ef ]
-"120 mcc_generated_files/mcc.c
-[v _TMR0_Initialize `(i ~T0 @X0 0 ef ]
-"109 mcc_generated_files/eusart1.h
+"111 mcc_generated_files/eusart1.h
 [v _EUSART1_Initialize `(v ~T0 @X0 0 ef ]
 "15793 C:\Program Files (x86)\Microchip\xc8\v1.36\include\pic18f26k22.h
 [v _OSCCON `Vuc ~T0 @X0 0 e@4051 ]
@@ -7189,17 +7187,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stdio.h: 195: extern int printf(const char *, ...);
 [; ;eusart1.h: 78: extern volatile uint8_t eusart1TxBufferRemaining;
 [; ;eusart1.h: 79: extern volatile uint8_t eusart1RxCount;
-"80 mcc_generated_files/eusart1.h
-[v _uartState `Vuc ~T0 @X0 1 e ]
-[i _uartState
--> -> 0 `i `uc
-]
-[; ;eusart1.h: 80: extern volatile uint8_t uartState=0;
-[; ;eusart1.h: 109: void EUSART1_Initialize(void);
-[; ;eusart1.h: 158: uint8_t EUSART1_Read(void);
-[; ;eusart1.h: 183: void EUSART1_Write(uint8_t txData);
-[; ;eusart1.h: 204: void EUSART1_Transmit_ISR(void);
-[; ;eusart1.h: 225: void EUSART1_Receive_ISR(void);
+[; ;eusart1.h: 81: extern volatile uint8_t uartState;
+[; ;eusart1.h: 82: extern volatile char line[128];
+[; ;eusart1.h: 111: void EUSART1_Initialize(void);
+[; ;eusart1.h: 160: uint8_t EUSART1_Read(void);
+[; ;eusart1.h: 185: void EUSART1_Write(uint8_t txData);
+[; ;eusart1.h: 206: void EUSART1_Transmit_ISR(void);
+[; ;eusart1.h: 227: void EUSART1_Receive_ISR(void);
+[; ;eusart1.h: 231: int read_line(void);
 [; ;tmr2.h: 103: void TMR2_Initialize(void);
 [; ;tmr2.h: 132: void TMR2_StartTimer(void);
 [; ;tmr2.h: 164: void TMR2_StopTimer(void);
@@ -7232,34 +7227,31 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;mcc.c: 119: TMR2_Initialize();
 "119
 [e ( _TMR2_Initialize ..  ]
-[; ;mcc.c: 120: TMR0_Initialize();
+[; ;mcc.c: 120: EUSART1_Initialize();
 "120
-[e ( _TMR0_Initialize ..  ]
-[; ;mcc.c: 121: EUSART1_Initialize();
-"121
 [e ( _EUSART1_Initialize ..  ]
-[; ;mcc.c: 122: }
-"122
+[; ;mcc.c: 121: }
+"121
 [e :UE 1085 ]
 }
-"124
+"123
 [v _OSCILLATOR_Initialize `(v ~T0 @X0 1 ef ]
-"125
+"124
 {
-[; ;mcc.c: 124: void OSCILLATOR_Initialize(void)
-[; ;mcc.c: 125: {
+[; ;mcc.c: 123: void OSCILLATOR_Initialize(void)
+[; ;mcc.c: 124: {
 [e :U _OSCILLATOR_Initialize ]
 [f ]
-[; ;mcc.c: 127: OSCCON = 0x70;
-"127
+[; ;mcc.c: 126: OSCCON = 0x70;
+"126
 [e = _OSCCON -> -> 112 `i `uc ]
-[; ;mcc.c: 129: OSCCON2 = 0x04;
-"129
+[; ;mcc.c: 128: OSCCON2 = 0x04;
+"128
 [e = _OSCCON2 -> -> 4 `i `uc ]
-[; ;mcc.c: 131: OSCTUNE = 0x40;
-"131
+[; ;mcc.c: 130: OSCTUNE = 0x40;
+"130
 [e = _OSCTUNE -> -> 64 `i `uc ]
-[; ;mcc.c: 134: }
-"134
+[; ;mcc.c: 133: }
+"133
 [e :UE 1086 ]
 }

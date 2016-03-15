@@ -1,6 +1,28 @@
 Version 3.2 HI-TECH Software Intermediate Code
+[v F7357 `(v ~T0 @X0 1 tf1`ul ]
+"156 C:\Program Files (x86)\Microchip\xc8\v1.36\include\pic18.h
+[v __delay `JF7357 ~T0 @X0 0 e ]
+[p i __delay ]
+"81 mcc_generated_files/eusart1.h
+[v _uartState `Vuc ~T0 @X0 0 e ]
+"195 C:\Program Files (x86)\Microchip\xc8\v1.36\include\stdio.h
+[v _printf `(i ~T0 @X0 0 ev`*Cuc ]
+"231 mcc_generated_files/eusart1.h
+[v _read_line `(i ~T0 @X0 0 ef ]
+"35 C:\Program Files (x86)\Microchip\xc8\v1.36\include\string.h
+[v _strcpy `(*uc ~T0 @X0 0 ef2`*uc`*Cuc ]
+"82 mcc_generated_files/eusart1.h
+[v _line `Vuc ~T0 @X0 -> 0 `x e ]
+"54 C:\Program Files (x86)\Microchip\xc8\v1.36\include\string.h
+[v _strlen `(ui ~T0 @X0 0 ef1`*Cuc ]
+"51
+[v _strstr `(*uc ~T0 @X0 0 ef2`*Cuc`*Cuc ]
+"194 C:\Program Files (x86)\Microchip\xc8\v1.36\include\stdio.h
+[v _sprintf `(i ~T0 @X0 0 e1v`*uc`*Cuc ]
+"58 C:\Program Files (x86)\Microchip\xc8\v1.36\include\stdlib.h
+[v _strtol `(l ~T0 @X0 0 ef3`*Cuc`**uc`i ]
 [p mainexit ]
-"29 main.c
+"79 main.c
 [v _SYSTEM_Initialize `(i ~T0 @X0 0 ef ]
 "16653 C:\Program Files (x86)\Microchip\xc8\v1.36\include\pic18f26k22.h
 [s S1056 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -16,12 +38,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S1055 . . . . ]
 "16679
 [v _INTCONbits `VS1055 ~T0 @X0 0 e@4082 ]
-[v F7357 `(v ~T0 @X0 1 tf1`ul ]
-"156 C:\Program Files (x86)\Microchip\xc8\v1.36\include\pic18.h
-[v __delay `JF7357 ~T0 @X0 0 e ]
-[p i __delay ]
-"195 C:\Program Files (x86)\Microchip\xc8\v1.36\include\stdio.h
-[v _printf `(i ~T0 @X0 0 ev`*Cuc ]
+"61 C:\Program Files (x86)\Microchip\xc8\v1.36\include\stdlib.h
+[v _srand `(v ~T0 @X0 0 ef1`ui ]
+"60
+[v _rand `(i ~T0 @X0 0 ef ]
+"122 mcc_generated_files/epwm1.h
+[v _EPWM1_LoadDutyValue `(v ~T0 @X0 0 ef1`ui ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -7108,31 +7130,20 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stdio.h: 195: extern int printf(const char *, ...);
 [; ;eusart1.h: 78: extern volatile uint8_t eusart1TxBufferRemaining;
 [; ;eusart1.h: 79: extern volatile uint8_t eusart1RxCount;
-"80 mcc_generated_files/eusart1.h
-[v _uartState `Vuc ~T0 @X0 1 e ]
-[i _uartState
--> -> 0 `i `uc
-]
-[; ;eusart1.h: 80: extern volatile uint8_t uartState=0;
-[; ;eusart1.h: 109: void EUSART1_Initialize(void);
-[; ;eusart1.h: 158: uint8_t EUSART1_Read(void);
-[; ;eusart1.h: 183: void EUSART1_Write(uint8_t txData);
-[; ;eusart1.h: 204: void EUSART1_Transmit_ISR(void);
-[; ;eusart1.h: 225: void EUSART1_Receive_ISR(void);
+[; ;eusart1.h: 81: extern volatile uint8_t uartState;
+[; ;eusart1.h: 82: extern volatile char line[128];
+[; ;eusart1.h: 111: void EUSART1_Initialize(void);
+[; ;eusart1.h: 160: uint8_t EUSART1_Read(void);
+[; ;eusart1.h: 185: void EUSART1_Write(uint8_t txData);
+[; ;eusart1.h: 206: void EUSART1_Transmit_ISR(void);
+[; ;eusart1.h: 227: void EUSART1_Receive_ISR(void);
+[; ;eusart1.h: 231: int read_line(void);
 [; ;interrupt_manager.h: 110: void INTERRUPT_Initialize (void);
 [; ;interrupt_manager.h: 122: void interrupt INTERRUPT_InterruptManager (void);
 [; ;pin_manager.h: 73: void PIN_MANAGER_Initialize (void);
 [; ;pin_manager.h: 85: void PIN_MANAGER_IOC(void);
 [; ;epwm1.h: 96: void EPWM1_Initialize(void);
 [; ;epwm1.h: 122: void EPWM1_LoadDutyValue(uint16_t dutyValue);
-[; ;tmr0.h: 106: void TMR0_Initialize(void);
-[; ;tmr0.h: 135: void TMR0_StartTimer(void);
-[; ;tmr0.h: 167: void TMR0_StopTimer(void);
-[; ;tmr0.h: 203: uint16_t TMR0_Read16bitTimer(void);
-[; ;tmr0.h: 242: void TMR0_Write16bitTimer(uint16_t timerVal);
-[; ;tmr0.h: 278: void TMR0_Reload16bit(void);
-[; ;tmr0.h: 296: void TMR0_ISR(void);
-[; ;tmr0.h: 314: void TMR0_CallBack(void);
 [; ;string.h: 14: extern void * memcpy(void *, const void *, size_t);
 [; ;string.h: 15: extern void * memmove(void *, const void *, size_t);
 [; ;string.h: 16: extern void * memset(void *, int, size_t);
@@ -7159,318 +7170,532 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;string.h: 56: extern char * strichr(const char *, int);
 [; ;string.h: 57: extern char * strrchr(const char *, int);
 [; ;string.h: 58: extern char * strrichr(const char *, int);
+[; ;stdlib.h: 7: typedef unsigned short wchar_t;
+[; ;stdlib.h: 15: typedef struct {
+[; ;stdlib.h: 16: int rem;
+[; ;stdlib.h: 17: int quot;
+[; ;stdlib.h: 18: } div_t;
+[; ;stdlib.h: 19: typedef struct {
+[; ;stdlib.h: 20: unsigned rem;
+[; ;stdlib.h: 21: unsigned quot;
+[; ;stdlib.h: 22: } udiv_t;
+[; ;stdlib.h: 23: typedef struct {
+[; ;stdlib.h: 24: long quot;
+[; ;stdlib.h: 25: long rem;
+[; ;stdlib.h: 26: } ldiv_t;
+[; ;stdlib.h: 27: typedef struct {
+[; ;stdlib.h: 28: unsigned long quot;
+[; ;stdlib.h: 29: unsigned long rem;
+[; ;stdlib.h: 30: } uldiv_t;
+[; ;stdlib.h: 53: extern double atof(const char *);
+[; ;stdlib.h: 54: extern double strtod(const char *, const char **);
+[; ;stdlib.h: 55: extern int atoi(const char *);
+[; ;stdlib.h: 56: extern unsigned xtoi(const char *);
+[; ;stdlib.h: 57: extern long atol(const char *);
+[; ;stdlib.h: 58: extern long strtol(const char *, char **, int);
+[; ;stdlib.h: 60: extern int rand(void);
+[; ;stdlib.h: 61: extern void srand(unsigned int);
+[; ;stdlib.h: 62: extern void * calloc(size_t, size_t);
+[; ;stdlib.h: 63: extern div_t div(int numer, int denom);
+[; ;stdlib.h: 64: extern udiv_t udiv(unsigned numer, unsigned denom);
+[; ;stdlib.h: 65: extern ldiv_t ldiv(long numer, long denom);
+[; ;stdlib.h: 66: extern uldiv_t uldiv(unsigned long numer,unsigned long denom);
+[; ;stdlib.h: 67: extern unsigned long _lrotl(unsigned long value, unsigned int shift);
+[; ;stdlib.h: 68: extern unsigned long _lrotr(unsigned long value, unsigned int shift);
+[; ;stdlib.h: 69: extern unsigned int _rotl(unsigned int value, unsigned int shift);
+[; ;stdlib.h: 70: extern unsigned int _rotr(unsigned int value, unsigned int shift);
+[; ;stdlib.h: 75: extern void * malloc(size_t);
+[; ;stdlib.h: 76: extern void free(void *);
+[; ;stdlib.h: 77: extern void * realloc(void *, size_t);
+[; ;stdlib.h: 86: extern int atexit(void (*)(void));
+[; ;stdlib.h: 87: extern char * getenv(const char *);
+[; ;stdlib.h: 88: extern char ** environ;
+[; ;stdlib.h: 89: extern int system(char *);
+[; ;stdlib.h: 90: extern void qsort(void *, size_t, size_t, int (*)(const void *, const void *));
+[; ;stdlib.h: 91: extern void * bsearch(const void *, void *, size_t, size_t, int(*)(const void *, const void *));
+[; ;stdlib.h: 92: extern int abs(int);
+[; ;stdlib.h: 93: extern long labs(long);
+[; ;stdlib.h: 95: extern char * itoa(char * buf, int val, int base);
+[; ;stdlib.h: 96: extern char * utoa(char * buf, unsigned val, int base);
+[; ;stdlib.h: 101: extern char * ltoa(char * buf, long val, int base);
+[; ;stdlib.h: 102: extern char * ultoa(char * buf, unsigned long val, int base);
+[; ;stdlib.h: 104: extern char * ftoa(float f, int * status);
 "28 main.c
-[v _main `(v ~T0 @X0 1 ef ]
-{
-[; ;main.c: 28: void main(void) {
-[e :U _main ]
-[f ]
-[; ;main.c: 29: SYSTEM_Initialize();
+[v _uuid `uc ~T0 @X0 -> 40 `i e ]
+[; ;main.c: 28: char uuid[40];
 "29
-[e ( _SYSTEM_Initialize ..  ]
-[; ;main.c: 31: (INTCONbits.GIE = 1);
-"31
-[e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
-[; ;main.c: 34: (INTCONbits.PEIE = 1);
+[v _val `uc ~T0 @X0 1 e ]
+[i _val
+-> -> 0 `i `uc
+]
+[; ;main.c: 29: uint8_t val=0;
+"30
+[v _inc `uc ~T0 @X0 1 e ]
+[i _inc
+-> -> 0 `i `uc
+]
+[; ;main.c: 30: uint8_t inc=0;
+"33
+[v _wait_for_ok `(v ~T0 @X0 1 ef ]
+{
+[; ;main.c: 33: void wait_for_ok(void){
+[e :U _wait_for_ok ]
+[f ]
+[; ;main.c: 34: while(uartState!=1){
 "34
-[e = . . _INTCONbits 1 6 -> -> 1 `i `uc ]
-[; ;main.c: 36: _delay((unsigned long)((10)*(64000000/4000.0)));
+[e $U 1090  ]
+[e :U 1091 ]
+{
+[; ;main.c: 35: _delay((unsigned long)((1)*(64000000/4000.0)));
+"35
+[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
 "36
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 38: printf("sys reset\r\n");
+}
+[e :U 1090 ]
+"34
+[e $ != -> _uartState `i -> 1 `i 1091  ]
+[e :U 1092 ]
+[; ;main.c: 36: }
+[; ;main.c: 37: uartState=0;
+"37
+[e = _uartState -> -> 0 `i `uc ]
+[; ;main.c: 38: }
 "38
-[e ( _printf :s 1C ]
-[; ;main.c: 39: for(uint8_t i=0;i<10;i++) { _delay((unsigned long)((10)*(64000000/4000.0))); }
-"39
-{
-[v _i `uc ~T0 @X0 1 a ]
-[e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 10 `i 1086  ]
-[e $U 1087  ]
-[e :U 1086 ]
-{
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
+[e :UE 1089 ]
 }
-[e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 10 `i 1086  ]
-[e :U 1087 ]
-}
-[; ;main.c: 40: printf("sys get ver\r\n");
 "40
-[e ( _printf :s 2C ]
-[; ;main.c: 41: for(uint8_t i=0;i<10;i++) { _delay((unsigned long)((10)*(64000000/4000.0))); }
+[v _wait_5ms `(v ~T0 @X0 1 ef1`i ]
+{
+[; ;main.c: 40: void wait_5ms(int j){
+[e :U _wait_5ms ]
+[v _j `i ~T0 @X0 1 r1 ]
+[f ]
+[; ;main.c: 41: for(uint8_t i=0;i<j;i++) { _delay((unsigned long)((5)*(64000000/4000.0))); }
 "41
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 10 `i 1089  ]
-[e $U 1090  ]
-[e :U 1089 ]
+[e $U 1097  ]
+[e :U 1094 ]
 {
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
+[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
 }
 [e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 10 `i 1089  ]
-[e :U 1090 ]
+[e :U 1097 ]
+[e $ < -> _i `i _j 1094  ]
+[e :U 1095 ]
 }
-[; ;main.c: 42: printf("radio get sf\r\n");
+[; ;main.c: 42: }
 "42
-[e ( _printf :s 3C ]
-[; ;main.c: 43: for(uint8_t i=0;i<10;i++) { _delay((unsigned long)((10)*(64000000/4000.0))); }
-"43
-{
-[v _i `uc ~T0 @X0 1 a ]
-[e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 10 `i 1092  ]
-[e $U 1093  ]
-[e :U 1092 ]
-{
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
+[e :UE 1093 ]
 }
-[e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 10 `i 1092  ]
-[e :U 1093 ]
-}
-[; ;main.c: 44: printf("radio get bw\r\n");
 "44
-[e ( _printf :s 4C ]
-[; ;main.c: 45: for(uint8_t i=0;i<10;i++) { _delay((unsigned long)((10)*(64000000/4000.0))); }
+[v _wait_1ms `(v ~T0 @X0 1 ef1`i ]
+{
+[; ;main.c: 44: void wait_1ms(int j){
+[e :U _wait_1ms ]
+[v _j `i ~T0 @X0 1 r1 ]
+[f ]
+[; ;main.c: 45: for(uint8_t i=0;i<j;i++) { _delay((unsigned long)((1)*(64000000/4000.0))); }
 "45
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 10 `i 1095  ]
-[e $U 1096  ]
-[e :U 1095 ]
-{
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-}
-[e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 10 `i 1095  ]
-[e :U 1096 ]
-}
-[; ;main.c: 46: printf("radio get cr\r\n");
-"46
-[e ( _printf :s 5C ]
-[; ;main.c: 47: for(uint8_t i=0;i<10;i++) { _delay((unsigned long)((10)*(64000000/4000.0))); }
-"47
-{
-[v _i `uc ~T0 @X0 1 a ]
-[e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 10 `i 1098  ]
-[e $U 1099  ]
-[e :U 1098 ]
-{
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-}
-[e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 10 `i 1098  ]
-[e :U 1099 ]
-}
-[; ;main.c: 48: printf("radio get prlen\r\n");
-"48
-[e ( _printf :s 6C ]
-[; ;main.c: 49: for(uint8_t i=0;i<10;i++) { _delay((unsigned long)((10)*(64000000/4000.0))); }
-"49
-{
-[v _i `uc ~T0 @X0 1 a ]
-[e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 10 `i 1101  ]
 [e $U 1102  ]
-[e :U 1101 ]
+[e :U 1099 ]
 {
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
+[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
 }
 [e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 10 `i 1101  ]
 [e :U 1102 ]
+[e $ < -> _i `i _j 1099  ]
+[e :U 1100 ]
 }
-[; ;main.c: 50: printf("radio get pwr\r\n");
+[; ;main.c: 46: }
+"46
+[e :UE 1098 ]
+}
+"48
+[v _getUUID `(v ~T0 @X0 1 ef ]
+{
+[; ;main.c: 48: void getUUID(){
+[e :U _getUUID ]
+[f ]
+[; ;main.c: 49: printf("sys get hweui\r\n");
+"49
+[e ( _printf :s 1C ]
+[; ;main.c: 50: read_line();
 "50
-[e ( _printf :s 7C ]
-[; ;main.c: 51: for(uint8_t i=0;i<10;i++) { _delay((unsigned long)((10)*(64000000/4000.0))); }
+[e ( _read_line ..  ]
+[; ;main.c: 51: strcpy(uuid,line);
 "51
-{
-[v _i `uc ~T0 @X0 1 a ]
-[e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 10 `i 1104  ]
-[e $U 1105  ]
-[e :U 1104 ]
-{
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
+[e ( _strcpy (2 , &U _uuid -> &U _line `*Cuc ]
+[; ;main.c: 52: }
+"52
+[e :UE 1103 ]
 }
-[e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 10 `i 1104  ]
-[e :U 1105 ]
-}
-[; ;main.c: 53: printf("mac pause\r\n");
-"53
-[e ( _printf :s 8C ]
-[; ;main.c: 54: for(uint8_t i=0;i<10;i++) { _delay((unsigned long)((10)*(64000000/4000.0))); }
 "54
+[v _process_message `(i ~T0 @X0 1 ef ]
 {
-[v _i `uc ~T0 @X0 1 a ]
-[e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 10 `i 1107  ]
-[e $U 1108  ]
-[e :U 1107 ]
-{
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-}
-[e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 10 `i 1107  ]
-[e :U 1108 ]
-}
-[; ;main.c: 56: printf("radio set pwr -3\r\n");
+[; ;main.c: 54: int process_message(){
+[e :U _process_message ]
+[f ]
+[; ;main.c: 56: if(strlen(line)!=32)return 0;
 "56
-[e ( _printf :s 9C ]
-[; ;main.c: 57: for(uint8_t i=0;i<10;i++) { _delay((unsigned long)((10)*(64000000/4000.0))); }
-"57
-{
-[v _i `uc ~T0 @X0 1 a ]
-[e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 10 `i 1110  ]
-[e $U 1111  ]
-[e :U 1110 ]
-{
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-}
-[e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 10 `i 1110  ]
-[e :U 1111 ]
-}
-[; ;main.c: 58: printf("radio set bw 500\r\n");
+[e $ ! != ( _strlen (1 -> &U _line `*Cuc -> -> 32 `i `ui 1105  ]
+[e ) -> 0 `i ]
+[e $UE 1104  ]
+[e :U 1105 ]
 "58
-[e ( _printf :s 10C ]
-[; ;main.c: 59: for(uint8_t i=0;i<10;i++) { _delay((unsigned long)((10)*(64000000/4000.0))); }
-"59
-{
-[v _i `uc ~T0 @X0 1 a ]
-[e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 10 `i 1113  ]
-[e $U 1114  ]
-[e :U 1113 ]
-{
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-}
-[e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 10 `i 1113  ]
-[e :U 1114 ]
-}
-[; ;main.c: 60: printf("radio set sf sf7\r\n");
+[v _res `i ~T0 @X0 1 a ]
+[; ;main.c: 58: int res = 0;
+[e = _res -> 0 `i ]
+[; ;main.c: 60: if(strstr(line,uuid)!=0)res++;
 "60
-[e ( _printf :s 11C ]
-[; ;main.c: 61: for(uint8_t i=0;i<10;i++) { _delay((unsigned long)((10)*(64000000/4000.0))); }
-"61
-{
-[v _i `uc ~T0 @X0 1 a ]
-[e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 10 `i 1116  ]
-[e $U 1117  ]
-[e :U 1116 ]
-{
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-}
-[e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 10 `i 1116  ]
-[e :U 1117 ]
-}
-[; ;main.c: 62: printf("radio set cr 4/5\r\n");
+[e $ ! != ( _strstr (2 , -> &U _line `*Cuc -> &U _uuid `*Cuc -> -> 0 `i `*uc 1106  ]
+[e ++ _res -> 1 `i ]
+[e :U 1106 ]
+[; ;main.c: 62: if(strstr(line,"FFFFFFFFFFFFFFFF")!=0)res++;
 "62
-[e ( _printf :s 12C ]
-[; ;main.c: 63: for(uint8_t i=0;i<10;i++) { _delay((unsigned long)((10)*(64000000/4000.0))); }
-"63
-{
-[v _i `uc ~T0 @X0 1 a ]
-[e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 10 `i 1119  ]
-[e $U 1120  ]
-[e :U 1119 ]
-{
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-}
-[e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 10 `i 1119  ]
-[e :U 1120 ]
-}
-[; ;main.c: 64: printf("radio set crc on\r\n");
+[e $ ! != ( _strstr (2 , -> &U _line `*Cuc :s 2C -> -> 0 `i `*uc 1107  ]
+[e ++ _res -> 1 `i ]
+[e :U 1107 ]
+[; ;main.c: 64: if(res>0){
 "64
-[e ( _printf :s 13C ]
-[; ;main.c: 65: for(uint8_t i=0;i<10;i++) { _delay((unsigned long)((10)*(64000000/4000.0))); }
-"65
+[e $ ! > _res -> 0 `i 1108  ]
 {
-[v _i `uc ~T0 @X0 1 a ]
-[e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 10 `i 1122  ]
-[e $U 1123  ]
-[e :U 1122 ]
-{
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
+"66
+[v _hexval `uc ~T0 @X0 -> 4 `i a ]
+[; ;main.c: 66: char hexval[4];
+[; ;main.c: 67: sprintf(hexval,"%c%c",line[28],line[29]);
+"67
+[e ( _sprintf (1 , , (. , &U _hexval :s 3C -> *U + &U _line * -> -> -> 28 `i `ui `ux -> -> # *U &U _line `ui `ux `i -> *U + &U _line * -> -> -> 29 `i `ui `ux -> -> # *U &U _line `ui `ux `i ]
+[; ;main.c: 68: val = (int)strtol(hexval, (0), 16);
+"68
+[e = _val -> -> ( _strtol (3 , , -> &U _hexval `*Cuc -> -> 0 `i `**uc -> 16 `i `i `uc ]
+[; ;main.c: 70: return 1;
+"70
+[e ) -> 1 `i ]
+[e $UE 1104  ]
+"71
 }
-[e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 10 `i 1122  ]
-[e :U 1123 ]
+[e :U 1108 ]
+[; ;main.c: 71: }
+[; ;main.c: 73: return 0;
+"73
+[e ) -> 0 `i ]
+[e $UE 1104  ]
+[; ;main.c: 74: }
+"74
+[e :UE 1104 ]
 }
 "78
-[v _val `ui ~T0 @X0 1 a ]
-[; ;main.c: 78: uint16_t val=0;
-[e = _val -> -> 0 `i `ui ]
-"79
-[v _sleep `ui ~T0 @X0 1 a ]
-[; ;main.c: 79: uint16_t sleep=0;
-[e = _sleep -> -> 0 `i `ui ]
-"80
-[v _a `i ~T0 @X0 1 a ]
-[; ;main.c: 80: int a =0;
-[e = _a -> 0 `i ]
-[; ;main.c: 81: while(1){
-"81
-[e :U 1126 ]
+[v _main `(v ~T0 @X0 1 ef ]
 {
-[; ;main.c: 94: _delay((unsigned long)((10)*(64000000/4000.0)));
-"94
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 95: _delay((unsigned long)((10)*(64000000/4000.0)));
-"95
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 96: _delay((unsigned long)((10)*(64000000/4000.0)));
-"96
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 97: _delay((unsigned long)((10)*(64000000/4000.0)));
-"97
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 98: _delay((unsigned long)((10)*(64000000/4000.0)));
-"98
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 99: printf("radio tx 1000000000000000000000%04X%d\r\n",val++,uartState);
-"99
-[e ( _printf , , (. :s 14C ++ _val -> -> 1 `i `ui -> _uartState `i ]
-"103
-}
-[e :U 1125 ]
+[; ;main.c: 78: void main(void) {
+[e :U _main ]
+[f ]
+[; ;main.c: 79: SYSTEM_Initialize();
+"79
+[e ( _SYSTEM_Initialize ..  ]
+[; ;main.c: 80: (INTCONbits.GIE = 1);
+"80
+[e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
+[; ;main.c: 81: (INTCONbits.PEIE = 1);
 "81
-[e $U 1126  ]
-[e :U 1127 ]
-[; ;main.c: 103: }
-[; ;main.c: 106: return;
+[e = . . _INTCONbits 1 6 -> -> 1 `i `uc ]
+[; ;main.c: 84: wait_5ms(5);
+"84
+[e ( _wait_5ms (1 -> 5 `i ]
+[; ;main.c: 85: printf("sys reset\r\n");
+"85
+[e ( _printf :s 4C ]
+[; ;main.c: 86: wait_5ms(5);
+"86
+[e ( _wait_5ms (1 -> 5 `i ]
+[; ;main.c: 87: printf("sys get ver\r\n");
+"87
+[e ( _printf :s 5C ]
+[; ;main.c: 88: read_line();
+"88
+[e ( _read_line ..  ]
+[; ;main.c: 89: printf("radio get sf\r\n");
+"89
+[e ( _printf :s 6C ]
+[; ;main.c: 90: read_line();
+"90
+[e ( _read_line ..  ]
+[; ;main.c: 91: printf("radio get bw\r\n");
+"91
+[e ( _printf :s 7C ]
+[; ;main.c: 92: read_line();
+"92
+[e ( _read_line ..  ]
+[; ;main.c: 93: printf("radio get cr\r\n");
+"93
+[e ( _printf :s 8C ]
+[; ;main.c: 94: read_line();
+"94
+[e ( _read_line ..  ]
+[; ;main.c: 95: printf("radio get prlen\r\n");
+"95
+[e ( _printf :s 9C ]
+[; ;main.c: 96: read_line();
+"96
+[e ( _read_line ..  ]
+[; ;main.c: 97: printf("radio get pwr\r\n");
+"97
+[e ( _printf :s 10C ]
+[; ;main.c: 98: read_line();
+"98
+[e ( _read_line ..  ]
+[; ;main.c: 99: printf("mac pause\r\n");
+"99
+[e ( _printf :s 11C ]
+[; ;main.c: 100: read_line();
+"100
+[e ( _read_line ..  ]
+[; ;main.c: 102: printf("radio set pwr -2\r\n");
+"102
+[e ( _printf :s 12C ]
+[; ;main.c: 103: read_line();
+"103
+[e ( _read_line ..  ]
+[; ;main.c: 104: printf("radio set bw 500\r\n");
+"104
+[e ( _printf :s 13C ]
+[; ;main.c: 105: read_line();
+"105
+[e ( _read_line ..  ]
+[; ;main.c: 106: printf("radio set sf sf7\r\n");
 "106
-[e $UE 1085  ]
-[; ;main.c: 107: }
+[e ( _printf :s 14C ]
+[; ;main.c: 107: read_line();
 "107
-[e :UE 1085 ]
+[e ( _read_line ..  ]
+[; ;main.c: 108: printf("radio set cr 4/8\r\n");
+"108
+[e ( _printf :s 15C ]
+[; ;main.c: 109: read_line();
+"109
+[e ( _read_line ..  ]
+[; ;main.c: 110: printf("radio set crc on\r\n");
+"110
+[e ( _printf :s 16C ]
+[; ;main.c: 111: read_line();
+"111
+[e ( _read_line ..  ]
+[; ;main.c: 113: getUUID();
+"113
+[e ( _getUUID ..  ]
+[; ;main.c: 115: srand((int)strtol(uuid, (0), 0));
+"115
+[e ( _srand (1 -> -> ( _strtol (3 , , -> &U _uuid `*Cuc -> -> 0 `i `**uc -> 0 `i `i `ui ]
+"116
+[v _delay `i ~T0 @X0 1 a ]
+[; ;main.c: 116: int delay = 1000+(rand()%1000);
+[e = _delay + -> 1000 `i % ( _rand ..  -> 1000 `i ]
+[; ;main.c: 117: printf("radio set wdt %d\r\n",delay);
+"117
+[e ( _printf , (. :s 17C _delay ]
+[; ;main.c: 118: read_line();
+"118
+[e ( _read_line ..  ]
+[; ;main.c: 132: printf("radio rx 0\r\n");
+"132
+[e ( _printf :s 18C ]
+[; ;main.c: 133: read_line();
+"133
+[e ( _read_line ..  ]
+"136
+[v _q `i ~T0 @X0 1 a ]
+[; ;main.c: 136: int q=0;
+[e = _q -> 0 `i ]
+[; ;main.c: 138: while(1){
+"138
+[e :U 1111 ]
+{
+[; ;main.c: 139: _delay((unsigned long)((1)*(64000000/4000.0)));
+"139
+[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
+[; ;main.c: 140: q++;
+"140
+[e ++ _q -> 1 `i ]
+[; ;main.c: 146: if(q>(2*delay)){
+"146
+[e $ ! > _q * -> 2 `i _delay 1113  ]
+{
+[; ;main.c: 147: break;
+"147
+[e $U 1112  ]
+"148
 }
-[p f _printf 10518660 ]
-[a 4C 114 97 100 105 111 32 103 101 116 32 98 119 13 10 0 ]
-[a 1C 115 121 115 32 114 101 115 101 116 13 10 0 ]
-[a 7C 114 97 100 105 111 32 103 101 116 32 112 119 114 13 10 0 ]
-[a 2C 115 121 115 32 103 101 116 32 118 101 114 13 10 0 ]
-[a 5C 114 97 100 105 111 32 103 101 116 32 99 114 13 10 0 ]
-[a 13C 114 97 100 105 111 32 115 101 116 32 99 114 99 32 111 110 13 10 0 ]
-[a 6C 114 97 100 105 111 32 103 101 116 32 112 114 108 101 110 13 10 0 ]
-[a 3C 114 97 100 105 111 32 103 101 116 32 115 102 13 10 0 ]
-[a 8C 109 97 99 32 112 97 117 115 101 13 10 0 ]
-[a 14C 114 97 100 105 111 32 116 120 32 49 48 48 48 48 48 48 48 48 48 48 48 48 48 48 48 48 48 48 48 48 48 37 48 52 88 37 100 13 10 0 ]
-[a 11C 114 97 100 105 111 32 115 101 116 32 115 102 32 115 102 55 13 10 0 ]
-[a 12C 114 97 100 105 111 32 115 101 116 32 99 114 32 52 47 53 13 10 0 ]
-[a 9C 114 97 100 105 111 32 115 101 116 32 112 119 114 32 45 51 13 10 0 ]
-[a 10C 114 97 100 105 111 32 115 101 116 32 98 119 32 53 48 48 13 10 0 ]
+[e :U 1113 ]
+[; ;main.c: 148: }
+[; ;main.c: 153: if(uartState>2){
+"153
+[e $ ! > -> _uartState `i -> 2 `i 1114  ]
+{
+[; ;main.c: 154: read_line();
+"154
+[e ( _read_line ..  ]
+[; ;main.c: 157: if(uartState==3){
+"157
+[e $ ! == -> _uartState `i -> 3 `i 1115  ]
+{
+[; ;main.c: 158: if(q>delay){
+"158
+[e $ ! > _q _delay 1116  ]
+{
+[; ;main.c: 159: uartState=5;
+"159
+[e = _uartState -> -> 5 `i `uc ]
+"160
+}
+[e :U 1116 ]
+"161
+}
+[e :U 1115 ]
+[; ;main.c: 160: }
+[; ;main.c: 161: }
+[; ;main.c: 165: if(uartState==4){
+"165
+[e $ ! == -> _uartState `i -> 4 `i 1117  ]
+{
+[; ;main.c: 167: if(process_message()){
+"167
+[e $ ! != ( _process_message ..  -> 0 `i 1118  ]
+{
+[; ;main.c: 168: delay = 1000+(rand()%1000);
+"168
+[e = _delay + -> 1000 `i % ( _rand ..  -> 1000 `i ]
+[; ;main.c: 169: wait_1ms((rand()%40)+15);
+"169
+[e ( _wait_1ms (1 + % ( _rand ..  -> 40 `i -> 15 `i ]
+[; ;main.c: 170: printf("radio tx 42%s%02X%02X0001\r\n",uuid,inc++,val);
+"170
+[e ( _printf , , , (. :s 19C -> &U _uuid `*Cuc -> ++ _inc -> -> 1 `i `uc `i -> _val `i ]
+[; ;main.c: 171: read_line();
+"171
+[e ( _read_line ..  ]
+[; ;main.c: 172: read_line();
+"172
+[e ( _read_line ..  ]
+[; ;main.c: 173: printf("radio set wdt %d\r\n",delay);
+"173
+[e ( _printf , (. :s 20C _delay ]
+[; ;main.c: 174: read_line();
+"174
+[e ( _read_line ..  ]
+[; ;main.c: 176: EPWM1_LoadDutyValue((uint16_t) val*4);
+"176
+[e ( _EPWM1_LoadDutyValue (1 * -> _val `ui -> -> 4 `i `ui ]
+[; ;main.c: 177: q=0;
+"177
+[e = _q -> 0 `i ]
+"178
+}
+[; ;main.c: 178: } else {
+[e $U 1119  ]
+[e :U 1118 ]
+{
+[; ;main.c: 179: if(q>delay){
+"179
+[e $ ! > _q _delay 1120  ]
+{
+[; ;main.c: 180: uartState=5;
+"180
+[e = _uartState -> -> 5 `i `uc ]
+"181
+}
+[e :U 1120 ]
+"182
+}
+[e :U 1119 ]
+"183
+}
+[e :U 1117 ]
+[; ;main.c: 181: }
+[; ;main.c: 182: }
+[; ;main.c: 183: }
+[; ;main.c: 185: if(uartState==5){
+"185
+[e $ ! == -> _uartState `i -> 5 `i 1121  ]
+{
+[; ;main.c: 186: delay = 1000+(rand()%1000);
+"186
+[e = _delay + -> 1000 `i % ( _rand ..  -> 1000 `i ]
+[; ;main.c: 187: printf("radio tx 42%s%02X%02X0000\r\n",uuid,inc++,val);
+"187
+[e ( _printf , , , (. :s 21C -> &U _uuid `*Cuc -> ++ _inc -> -> 1 `i `uc `i -> _val `i ]
+[; ;main.c: 188: read_line();
+"188
+[e ( _read_line ..  ]
+[; ;main.c: 189: read_line();
+"189
+[e ( _read_line ..  ]
+[; ;main.c: 190: printf("radio set wdt %d\r\n",delay);
+"190
+[e ( _printf , (. :s 22C _delay ]
+[; ;main.c: 191: read_line();
+"191
+[e ( _read_line ..  ]
+[; ;main.c: 192: q=0;
+"192
+[e = _q -> 0 `i ]
+"193
+}
+[e :U 1121 ]
+[; ;main.c: 193: }
+[; ;main.c: 195: printf("radio rx 0\r\n");
+"195
+[e ( _printf :s 23C ]
+[; ;main.c: 196: read_line();
+"196
+[e ( _read_line ..  ]
+[; ;main.c: 197: uartState=0;
+"197
+[e = _uartState -> -> 0 `i `uc ]
+"199
+}
+[e :U 1114 ]
+"203
+}
+[e :U 1110 ]
+"138
+[e $U 1111  ]
+[e :U 1112 ]
+[; ;main.c: 199: }
+[; ;main.c: 203: }
+[; ;main.c: 206: return;
+"206
+[e $UE 1109  ]
+[; ;main.c: 207: }
+"207
+[e :UE 1109 ]
+}
+[p f _sprintf 8912896 ]
+[p f _printf 10780804 ]
+[a 3C 37 99 37 99 0 ]
+[a 2C 70 70 70 70 70 70 70 70 70 70 70 70 70 70 70 70 0 ]
+[a 7C 114 97 100 105 111 32 103 101 116 32 98 119 13 10 0 ]
+[a 4C 115 121 115 32 114 101 115 101 116 13 10 0 ]
+[a 10C 114 97 100 105 111 32 103 101 116 32 112 119 114 13 10 0 ]
+[a 5C 115 121 115 32 103 101 116 32 118 101 114 13 10 0 ]
+[a 8C 114 97 100 105 111 32 103 101 116 32 99 114 13 10 0 ]
+[a 16C 114 97 100 105 111 32 115 101 116 32 99 114 99 32 111 110 13 10 0 ]
+[a 9C 114 97 100 105 111 32 103 101 116 32 112 114 108 101 110 13 10 0 ]
+[a 1C 115 121 115 32 103 101 116 32 104 119 101 117 105 13 10 0 ]
+[a 6C 114 97 100 105 111 32 103 101 116 32 115 102 13 10 0 ]
+[a 11C 109 97 99 32 112 97 117 115 101 13 10 0 ]
+[a 17C 114 97 100 105 111 32 115 101 116 32 119 100 116 32 37 100 13 10 0 ]
+[a 20C 114 97 100 105 111 32 115 101 116 32 119 100 116 32 37 100 13 10 0 ]
+[a 22C 114 97 100 105 111 32 115 101 116 32 119 100 116 32 37 100 13 10 0 ]
+[a 15C 114 97 100 105 111 32 115 101 116 32 99 114 32 52 47 56 13 10 0 ]
+[a 14C 114 97 100 105 111 32 115 101 116 32 115 102 32 115 102 55 13 10 0 ]
+[a 12C 114 97 100 105 111 32 115 101 116 32 112 119 114 32 45 50 13 10 0 ]
+[a 19C 114 97 100 105 111 32 116 120 32 52 50 37 115 37 48 50 88 37 48 50 88 48 48 48 49 13 10 0 ]
+[a 13C 114 97 100 105 111 32 115 101 116 32 98 119 32 53 48 48 13 10 0 ]
+[a 21C 114 97 100 105 111 32 116 120 32 52 50 37 115 37 48 50 88 37 48 50 88 48 48 48 48 13 10 0 ]
+[a 18C 114 97 100 105 111 32 114 120 32 48 13 10 0 ]
+[a 23C 114 97 100 105 111 32 114 120 32 48 13 10 0 ]
