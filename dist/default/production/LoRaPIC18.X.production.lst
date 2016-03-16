@@ -1,7 +1,7 @@
 
 
 Microchip Technology PIC18 LITE Macro Assembler V1.36 build -262312587 
-                                                                                               Mon Mar 14 21:00:08 2016
+                                                                                               Tue Mar 15 09:26:09 2016
 
 Microchip Technology Omniscient Code Generator v1.36 (Free mode) build 201601150325
      1                           	processor	18F26K22
@@ -1434,7 +1434,7 @@ Microchip Technology Omniscient Code Generator v1.36 (Free mode) build 201601150
   1423  000AD0  C069  F079         	movff	?_strtol+1,srand@x+1
   1424  000AD4  EC5C  F00E         	call	_srand	;wreg free
   1425                           
-  1426                           ;main.c: 116: int delay = 1000+(rand()%1000);
+  1426                           ;main.c: 116: int delay = 2000+(rand()%1000);
   1427  000AD8  ECA7  F00B         	call	_rand	;wreg free
   1428  000ADC  C02A  F068         	movff	?_rand,___awmod@dividend
   1429  000AE0  C02B  F069         	movff	?_rand+1,___awmod@dividend+1
@@ -1444,12 +1444,12 @@ Microchip Technology Omniscient Code Generator v1.36 (Free mode) build 201601150
   1433  000AEA  0EE8               	movlw	232
   1434  000AEC  6F6A               	movwf	___awmod@divisor& (0+255),b
   1435  000AEE  EC27  F00A         	call	___awmod	;wreg free
-  1436  000AF2  0EE8               	movlw	232
+  1436  000AF2  0ED0               	movlw	208
   1437  000AF4  0100               	movlb	0	; () banked
   1438  000AF6  2568               	addwf	?___awmod& (0+255),w,b
   1439  000AF8  0100               	movlb	0	; () banked
   1440  000AFA  6F96               	movwf	main@delay& (0+255),b
-  1441  000AFC  0E03               	movlw	3
+  1441  000AFC  0E07               	movlw	7
   1442  000AFE  0100               	movlb	0	; () banked
   1443  000B00  2169               	addwfc	(?___awmod+1)& (0+255),w,b
   1444  000B02  0100               	movlb	0	; () banked
@@ -1604,7 +1604,7 @@ Microchip Technology Omniscient Code Generator v1.36 (Free mode) build 201601150
   1593  000BDE  D069               	goto	l3737
   1594                           
   1595                           ; BSR set to: 0
-  1596                           ;main.c: 168: delay = 1000+(rand()%1000);
+  1596                           ;main.c: 168: delay = 2000+(rand()%1000);
   1597  000BE0  ECA7  F00B         	call	_rand	;wreg free
   1598  000BE4  C02A  F068         	movff	?_rand,___awmod@dividend
   1599  000BE8  C02B  F069         	movff	?_rand+1,___awmod@dividend+1
@@ -1614,18 +1614,18 @@ Microchip Technology Omniscient Code Generator v1.36 (Free mode) build 201601150
   1603  000BF2  0EE8               	movlw	232
   1604  000BF4  6F6A               	movwf	___awmod@divisor& (0+255),b
   1605  000BF6  EC27  F00A         	call	___awmod	;wreg free
-  1606  000BFA  0EE8               	movlw	232
+  1606  000BFA  0ED0               	movlw	208
   1607  000BFC  0100               	movlb	0	; () banked
   1608  000BFE  2568               	addwf	?___awmod& (0+255),w,b
   1609  000C00  0100               	movlb	0	; () banked
   1610  000C02  6F96               	movwf	main@delay& (0+255),b
-  1611  000C04  0E03               	movlw	3
+  1611  000C04  0E07               	movlw	7
   1612  000C06  0100               	movlb	0	; () banked
   1613  000C08  2169               	addwfc	(?___awmod+1)& (0+255),w,b
   1614  000C0A  0100               	movlb	0	; () banked
   1615  000C0C  6F97               	movwf	(main@delay+1)& (0+255),b
   1616                           
-  1617                           ;main.c: 169: wait_1ms((rand()%40)+15);
+  1617                           ;main.c: 169: wait_1ms((rand()%40)+25);
   1618  000C0E  ECA7  F00B         	call	_rand	;wreg free
   1619  000C12  C02A  F068         	movff	?_rand,___awmod@dividend
   1620  000C16  C02B  F069         	movff	?_rand+1,___awmod@dividend+1
@@ -1635,7 +1635,7 @@ Microchip Technology Omniscient Code Generator v1.36 (Free mode) build 201601150
   1624  000C20  0E28               	movlw	40
   1625  000C22  6F6A               	movwf	___awmod@divisor& (0+255),b
   1626  000C24  EC27  F00A         	call	___awmod	;wreg free
-  1627  000C28  0E0F               	movlw	15
+  1627  000C28  0E19               	movlw	25
   1628  000C2A  0100               	movlb	0	; () banked
   1629  000C2C  2568               	addwf	?___awmod& (0+255),w,b
   1630  000C2E  0100               	movlb	0	; () banked
@@ -1748,7 +1748,7 @@ Microchip Technology Omniscient Code Generator v1.36 (Free mode) build 201601150
   1737  000CE0  D046               	goto	l3759
   1738                           
   1739                           ; BSR set to: 0
-  1740                           ;main.c: 186: delay = 1000+(rand()%1000);
+  1740                           ;main.c: 186: delay = 2000+(rand()%1000);
   1741  000CE2  ECA7  F00B         	call	_rand	;wreg free
   1742  000CE6  C02A  F068         	movff	?_rand,___awmod@dividend
   1743  000CEA  C02B  F069         	movff	?_rand+1,___awmod@dividend+1
@@ -1758,12 +1758,12 @@ Microchip Technology Omniscient Code Generator v1.36 (Free mode) build 201601150
   1747  000CF4  0EE8               	movlw	232
   1748  000CF6  6F6A               	movwf	___awmod@divisor& (0+255),b
   1749  000CF8  EC27  F00A         	call	___awmod	;wreg free
-  1750  000CFC  0EE8               	movlw	232
+  1750  000CFC  0ED0               	movlw	208
   1751  000CFE  0100               	movlb	0	; () banked
   1752  000D00  2568               	addwf	?___awmod& (0+255),w,b
   1753  000D02  0100               	movlb	0	; () banked
   1754  000D04  6F96               	movwf	main@delay& (0+255),b
-  1755  000D06  0E03               	movlw	3
+  1755  000D06  0E07               	movlw	7
   1756  000D08  0100               	movlb	0	; () banked
   1757  000D0A  2169               	addwfc	(?___awmod+1)& (0+255),w,b
   1758  000D0C  0100               	movlb	0	; () banked
@@ -9495,7 +9495,7 @@ CODE                 0      0       0       0        0.0%
 
 
 Microchip Technology PIC18 Macro Assembler V1.36 build -262312587 
-Symbol Table                                                                                   Mon Mar 14 21:00:08 2016
+Symbol Table                                                                                   Tue Mar 15 09:26:09 2016
 
            _eusart1TxBufferRemaining 0039                  ___wmul@multiplicand 0028  
                        __CFG_CP0$OFF 000000                         __CFG_CP1$OFF 000000  

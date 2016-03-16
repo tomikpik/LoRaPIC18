@@ -7493,8 +7493,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _srand (1 -> -> ( _strtol (3 , , -> &U _uuid `*Cuc -> -> 0 `i `**uc -> 0 `i `i `ui ]
 "116
 [v _delay `i ~T0 @X0 1 a ]
-[; ;main.c: 116: int delay = 1000+(rand()%1000);
-[e = _delay + -> 1000 `i % ( _rand ..  -> 1000 `i ]
+[; ;main.c: 116: int delay = 2000+(rand()%1000);
+[e = _delay + -> 2000 `i % ( _rand ..  -> 1000 `i ]
 [; ;main.c: 117: printf("radio set wdt %d\r\n",delay);
 "117
 [e ( _printf , (. :s 17C _delay ]
@@ -7566,12 +7566,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 "167
 [e $ ! != ( _process_message ..  -> 0 `i 1118  ]
 {
-[; ;main.c: 168: delay = 1000+(rand()%1000);
+[; ;main.c: 168: delay = 2000+(rand()%1000);
 "168
-[e = _delay + -> 1000 `i % ( _rand ..  -> 1000 `i ]
-[; ;main.c: 169: wait_1ms((rand()%40)+15);
+[e = _delay + -> 2000 `i % ( _rand ..  -> 1000 `i ]
+[; ;main.c: 169: wait_1ms((rand()%40)+25);
 "169
-[e ( _wait_1ms (1 + % ( _rand ..  -> 40 `i -> 15 `i ]
+[e ( _wait_1ms (1 + % ( _rand ..  -> 40 `i -> 25 `i ]
 [; ;main.c: 170: printf("radio tx 42%s%02X%02X0001\r\n",uuid,inc++,val);
 "170
 [e ( _printf , , , (. :s 19C -> &U _uuid `*Cuc -> ++ _inc -> -> 1 `i `uc `i -> _val `i ]
@@ -7622,9 +7622,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "185
 [e $ ! == -> _uartState `i -> 5 `i 1121  ]
 {
-[; ;main.c: 186: delay = 1000+(rand()%1000);
+[; ;main.c: 186: delay = 2000+(rand()%1000);
 "186
-[e = _delay + -> 1000 `i % ( _rand ..  -> 1000 `i ]
+[e = _delay + -> 2000 `i % ( _rand ..  -> 1000 `i ]
 [; ;main.c: 187: printf("radio tx 42%s%02X%02X0000\r\n",uuid,inc++,val);
 "187
 [e ( _printf , , , (. :s 21C -> &U _uuid `*Cuc -> ++ _inc -> -> 1 `i `uc `i -> _val `i ]
