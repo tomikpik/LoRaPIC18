@@ -167,7 +167,7 @@ void main(void) {
                 if(process_message()){      
                     delay = 2000+(rand()%1000);
                     wait_1ms((rand()%40)+25);
-                    printf("radio tx 42%s%02X%02X0001\r\n",uuid,inc++,val); 
+                    printf("radio tx 42%s%02X%02X00000001\r\n",uuid,inc++,val); 
                     read_line(); 
                     read_line();                 
                     printf("radio set wdt %d\r\n",delay);
@@ -184,7 +184,7 @@ void main(void) {
             
             if(uartState==5){
                 delay = 2000+(rand()%1000);
-                printf("radio tx 42%s%02X%02X0000\r\n",uuid,inc++,val); 
+                printf("radio tx 42%s%02X%02X00000000\r\n",uuid,inc++,val); 
                 read_line(); 
                 read_line(); 
                 printf("radio set wdt %d\r\n",delay);
