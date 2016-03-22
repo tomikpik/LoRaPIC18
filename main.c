@@ -51,6 +51,10 @@ void getUUID(){
     strcpy(uuid,line); 
 }
 
+/**
+ * Process packet
+ * @return 
+ */
 int process_message(){
     //packet length doesn't match
     if(strlen(line)!=32)return 0;
@@ -65,22 +69,16 @@ int process_message(){
         //parse illum value 28 29
         char hexval[4];
         sprintf(hexval,"%c%c",line[28],line[29]);
-        val = (int)strtol(hexval, NULL, 16);
-        
+        val = (int)strtol(hexval, NULL, 16);        
         return 1;
     }
-
     return 0;
 }
 
-
-
-void main(void) {
-    SYSTEM_Initialize(); 	
-    INTERRUPT_GlobalInterruptEnable();  
-	INTERRUPT_PeripheralInterruptEnable();
-    
-    
+/**
+ * Setup RN2483
+ */
+void InitRadio(void){
     wait_5ms(5); 
     printf("sys reset\r\n");
     wait_5ms(5); 
@@ -112,61 +110,52 @@ void main(void) {
     
     getUUID();
      
+    
+}
+
+/**
+ * Main code where RN2483 is initialized and then the module is listening for commands.
+ * While it (in partially random intervals) sends heartbeat packets. 
+ */
+
+void main(void) {
+    SYSTEM_Initialize(); 	
+    INTERRUPT_GlobalInterruptEnable();  
+	INTERRUPT_PeripheralInterruptEnable();
+    
+    InitRadio(); 
+    
+    //random delay generation
     srand((int)strtol(uuid, NULL, 0));
     int delay = 2000+(rand()%1000);
     printf("radio set wdt %d\r\n",delay);
     read_line(); 
-    
-   
-    /*
-    printf("radio set pwr -3\r\n");
-    for(uint8_t i=0;i<10;i++) { __delay_ms(10); }
-    printf("radio set mod fsk\r\n");
-    for(uint8_t i=0;i<10;i++) { __delay_ms(10); }
-    printf("radio set bt 1.0\r\n");
-    for(uint8_t i=0;i<10;i++) { __delay_ms(10); }
-    printf("radio set rxbw 2.6\r\n");
-    for(uint8_t i=0;i<10;i++) { __delay_ms(10); }
-    */
-            
+    //start listening
     printf("radio rx 0\r\n");
     read_line(); 
-    
     
     int q=0;
     
     while(1){
         __delay_ms(1);
         q++;
-            
             //1B       8B               1B        1B  1B
             //PREAMBLE UUID             INCREMENT PWM REQ_ID
             //42       0000000000000000 00        00  00
-        
-        if(q>(2*delay)){
-            break;
-        }
-        
-        
-        
+        if(q>(2*delay)){break;}
         
         if(uartState>2){
             read_line();   
-            
-            
             if(uartState==3){
                 if(q>delay){
                     uartState=5;
                 }
             }  
             
-            
-            
             if(uartState==4){               
                 
                 if(process_message()){      
                     delay = 2000+(rand()%1000);
-                    wait_1ms((rand()%40)+25);
                     printf("radio tx 42%s%02X%02X00000001\r\n",uuid,inc++,val); 
                     read_line(); 
                     read_line();                 
@@ -195,13 +184,7 @@ void main(void) {
             printf("radio rx 0\r\n");
             read_line(); 
             uartState=0;        
-            
-        }
-        
-                
-        
+        }   
     }
-    
-    
     return;
 }

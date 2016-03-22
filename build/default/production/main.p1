@@ -7569,109 +7569,106 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 168: delay = 2000+(rand()%1000);
 "168
 [e = _delay + -> 2000 `i % ( _rand ..  -> 1000 `i ]
-[; ;main.c: 169: wait_1ms((rand()%40)+25);
+[; ;main.c: 169: printf("radio tx 42%s%02X%02X00000001\r\n",uuid,inc++,val);
 "169
-[e ( _wait_1ms (1 + % ( _rand ..  -> 40 `i -> 25 `i ]
-[; ;main.c: 170: printf("radio tx 42%s%02X%02X00000001\r\n",uuid,inc++,val);
-"170
 [e ( _printf , , , (. :s 19C -> &U _uuid `*Cuc -> ++ _inc -> -> 1 `i `uc `i -> _val `i ]
+[; ;main.c: 170: read_line();
+"170
+[e ( _read_line ..  ]
 [; ;main.c: 171: read_line();
 "171
 [e ( _read_line ..  ]
-[; ;main.c: 172: read_line();
+[; ;main.c: 172: printf("radio set wdt %d\r\n",delay);
 "172
-[e ( _read_line ..  ]
-[; ;main.c: 173: printf("radio set wdt %d\r\n",delay);
-"173
 [e ( _printf , (. :s 20C _delay ]
-[; ;main.c: 174: read_line();
-"174
+[; ;main.c: 173: read_line();
+"173
 [e ( _read_line ..  ]
-[; ;main.c: 176: EPWM1_LoadDutyValue((uint16_t) val*4);
-"176
+[; ;main.c: 175: EPWM1_LoadDutyValue((uint16_t) val*4);
+"175
 [e ( _EPWM1_LoadDutyValue (1 * -> _val `ui -> -> 4 `i `ui ]
-[; ;main.c: 177: q=0;
-"177
+[; ;main.c: 176: q=0;
+"176
 [e = _q -> 0 `i ]
-"178
+"177
 }
-[; ;main.c: 178: } else {
+[; ;main.c: 177: } else {
 [e $U 1119  ]
 [e :U 1118 ]
 {
-[; ;main.c: 179: if(q>delay){
-"179
+[; ;main.c: 178: if(q>delay){
+"178
 [e $ ! > _q _delay 1120  ]
 {
-[; ;main.c: 180: uartState=5;
-"180
+[; ;main.c: 179: uartState=5;
+"179
 [e = _uartState -> -> 5 `i `uc ]
-"181
+"180
 }
 [e :U 1120 ]
-"182
+"181
 }
 [e :U 1119 ]
-"183
+"182
 }
 [e :U 1117 ]
+[; ;main.c: 180: }
 [; ;main.c: 181: }
 [; ;main.c: 182: }
-[; ;main.c: 183: }
-[; ;main.c: 185: if(uartState==5){
-"185
+[; ;main.c: 184: if(uartState==5){
+"184
 [e $ ! == -> _uartState `i -> 5 `i 1121  ]
 {
-[; ;main.c: 186: delay = 2000+(rand()%1000);
-"186
+[; ;main.c: 185: delay = 2000+(rand()%1000);
+"185
 [e = _delay + -> 2000 `i % ( _rand ..  -> 1000 `i ]
-[; ;main.c: 187: printf("radio tx 42%s%02X%02X00000000\r\n",uuid,inc++,val);
-"187
+[; ;main.c: 186: printf("radio tx 42%s%02X%02X00000000\r\n",uuid,inc++,val);
+"186
 [e ( _printf , , , (. :s 21C -> &U _uuid `*Cuc -> ++ _inc -> -> 1 `i `uc `i -> _val `i ]
+[; ;main.c: 187: read_line();
+"187
+[e ( _read_line ..  ]
 [; ;main.c: 188: read_line();
 "188
 [e ( _read_line ..  ]
-[; ;main.c: 189: read_line();
+[; ;main.c: 189: printf("radio set wdt %d\r\n",delay);
 "189
-[e ( _read_line ..  ]
-[; ;main.c: 190: printf("radio set wdt %d\r\n",delay);
-"190
 [e ( _printf , (. :s 22C _delay ]
-[; ;main.c: 191: read_line();
-"191
+[; ;main.c: 190: read_line();
+"190
 [e ( _read_line ..  ]
-[; ;main.c: 192: q=0;
-"192
+[; ;main.c: 191: q=0;
+"191
 [e = _q -> 0 `i ]
-"193
+"192
 }
 [e :U 1121 ]
-[; ;main.c: 193: }
-[; ;main.c: 195: printf("radio rx 0\r\n");
-"195
+[; ;main.c: 192: }
+[; ;main.c: 194: printf("radio rx 0\r\n");
+"194
 [e ( _printf :s 23C ]
-[; ;main.c: 196: read_line();
-"196
+[; ;main.c: 195: read_line();
+"195
 [e ( _read_line ..  ]
-[; ;main.c: 197: uartState=0;
-"197
+[; ;main.c: 196: uartState=0;
+"196
 [e = _uartState -> -> 0 `i `uc ]
-"199
+"198
 }
 [e :U 1114 ]
-"203
+"202
 }
 [e :U 1110 ]
 "138
 [e $U 1111  ]
 [e :U 1112 ]
-[; ;main.c: 199: }
-[; ;main.c: 203: }
-[; ;main.c: 206: return;
-"206
+[; ;main.c: 198: }
+[; ;main.c: 202: }
+[; ;main.c: 205: return;
+"205
 [e $UE 1109  ]
-[; ;main.c: 207: }
-"207
+[; ;main.c: 206: }
+"206
 [e :UE 1109 ]
 }
 [p f _sprintf 8912896 ]

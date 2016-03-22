@@ -71,8 +71,6 @@
 [v ___lmul __lmul `(ul  1 e 4 0 ]
 "40 C:\Users\Tom\MPLABXProjects\LoRaPIC18.X\main.c
 [v _wait_5ms wait_5ms `(v  1 e 1 0 ]
-"44
-[v _wait_1ms wait_1ms `(v  1 e 1 0 ]
 "48
 [v _getUUID getUUID `(v  1 e 1 0 ]
 "54
@@ -403,7 +401,7 @@
 [v main@delay delay `i  1 a 2 54 ]
 "136
 [v main@q q `i  1 a 2 52 ]
-"207
+"206
 } 0
 "40
 [v _wait_5ms wait_5ms `(v  1 e 1 0 ]
@@ -413,15 +411,6 @@
 "40
 [v wait_5ms@j j `i  1 p 2 37 ]
 "42
-} 0
-"44
-[v _wait_1ms wait_1ms `(v  1 e 1 0 ]
-{
-"45
-[v wait_1ms@i i `uc  1 a 1 43 ]
-"44
-[v wait_1ms@j j `i  1 p 2 14 ]
-"46
 } 0
 "6 C:\Program Files (x86)\Microchip\xc8\v1.36\sources\common\rand.c
 [v _srand srand `(v  1 e 1 0 ]
@@ -537,9 +526,9 @@
 "13 C:\Program Files (x86)\Microchip\xc8\v1.36\sources\common\sprintf.c
 [v _sprintf sprintf `(i  1 e 2 0 ]
 {
-[s S772 __prbuf 4 `*.39uc 1 ptr 2 0 `*.37(v 1 func 2 2 ]
+[s S771 __prbuf 4 `*.39uc 1 ptr 2 0 `*.37(v 1 func 2 2 ]
 "29
-[v sprintf@pb pb `S772  1 a 4 37 ]
+[v sprintf@pb pb `S771  1 a 4 37 ]
 "28
 [v sprintf@ap ap `[1]*.39v  1 a 2 35 ]
 "13
@@ -570,9 +559,9 @@
 "13 C:\Program Files (x86)\Microchip\xc8\v1.36\sources\common\printf.c
 [v _printf printf `(i  1 e 2 0 ]
 {
-[s S772 __prbuf 4 `*.39uc 1 ptr 2 0 `*.37(v 1 func 2 2 ]
+[s S771 __prbuf 4 `*.39uc 1 ptr 2 0 `*.37(v 1 func 2 2 ]
 "21
-[v printf@pb pb `S772  1 a 4 37 ]
+[v printf@pb pb `S771  1 a 4 37 ]
 "15
 [v printf@ap ap `[1]*.39v  1 a 2 35 ]
 "13
@@ -598,9 +587,9 @@
 [v __doprnt@flag flag `uc  1 a 1 23 ]
 "506
 [v __doprnt@prec prec `c  1 a 1 16 ]
-[s S772 __prbuf 4 `*.39uc 1 ptr 2 0 `*.37(v 1 func 2 2 ]
+[s S771 __prbuf 4 `*.39uc 1 ptr 2 0 `*.37(v 1 func 2 2 ]
 "458
-[v __doprnt@pb pb `*.39S772  1 p 2 5 ]
+[v __doprnt@pb pb `*.39S771  1 p 2 5 ]
 [v __doprnt@f f `*.32Cuc  1 p 2 7 ]
 [v __doprnt@ap ap `*.39*.39v  1 p 2 9 ]
 "1541
