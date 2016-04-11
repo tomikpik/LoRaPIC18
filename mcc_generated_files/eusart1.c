@@ -261,6 +261,10 @@ void EUSART1_Receive_ISR(void)
     
 }
 
+/**
+ * Waits for new line
+ * @return 
+ */
 int read_line(void){
     while(ready!=1){
     }
