@@ -9141,6 +9141,7 @@ read_line();
 strcpy(uuid,line);
 }
 
+# 58
 int process_message(){
 
 if(strlen(line)!=32)return 0;
@@ -9156,21 +9157,13 @@ if(res>0){
 char hexval[4];
 sprintf(hexval,"%c%c",line[28],line[29]);
 val = (int)strtol(hexval, (0), 16);
-
 return 1;
 }
-
 return 0;
 }
 
-
-
-void main(void) {
-SYSTEM_Initialize();
-(INTCONbits.GIE = 1);
-(INTCONbits.PEIE = 1);
-
-
+# 81
+void InitRadio(void){
 wait_5ms(5);
 printf("sys reset\r\n");
 wait_5ms(5);
@@ -9202,15 +9195,25 @@ read_line();
 
 getUUID();
 
+
+}
+
+# 121
+void main(void) {
+SYSTEM_Initialize();
+(INTCONbits.GIE = 1);
+(INTCONbits.PEIE = 1);
+
+InitRadio();
+
+
 srand((int)strtol(uuid, (0), 0));
 int delay = 2000+(rand()%1000);
 printf("radio set wdt %d\r\n",delay);
 read_line();
 
-# 132
 printf("radio rx 0\r\n");
 read_line();
-
 
 int q=0;
 
@@ -9218,25 +9221,17 @@ while(1){
 _delay((unsigned long)((1)*(64000000/4000.0)));
 q++;
 
-# 146
-if(q>(2*delay)){
-break;
-}
 
 
-
+if(q>(2*delay)){break;}
 
 if(uartState>2){
 read_line();
-
-
 if(uartState==3){
 if(q>delay){
 uartState=5;
 }
 }
-
-
 
 if(uartState==4){
 
@@ -9270,13 +9265,7 @@ q=0;
 printf("radio rx 0\r\n");
 read_line();
 uartState=0;
-
 }
-
-
-
 }
-
-
 return;
 }

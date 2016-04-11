@@ -8933,7 +8933,7 @@ void TMR2_Initialize(void)
 
 
 
-T2CON = 0x00;
+T2CON = 0x7E;
 
 
 PR2 = 0xFF;

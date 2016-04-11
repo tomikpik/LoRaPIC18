@@ -22,7 +22,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 "58 C:\Program Files (x86)\Microchip\xc8\v1.36\include\stdlib.h
 [v _strtol `(l ~T0 @X0 0 ef3`*Cuc`**uc`i ]
 [p mainexit ]
-"79 main.c
+"122 main.c
 [v _SYSTEM_Initialize `(i ~T0 @X0 0 ef ]
 "16653 C:\Program Files (x86)\Microchip\xc8\v1.36\include\pic18f26k22.h
 [s S1056 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -7334,342 +7334,351 @@ Version 3.2 HI-TECH Software Intermediate Code
 "52
 [e :UE 1103 ]
 }
-"54
+"58
 [v _process_message `(i ~T0 @X0 1 ef ]
 {
-[; ;main.c: 54: int process_message(){
+[; ;main.c: 58: int process_message(){
 [e :U _process_message ]
 [f ]
-[; ;main.c: 56: if(strlen(line)!=32)return 0;
-"56
+[; ;main.c: 60: if(strlen(line)!=32)return 0;
+"60
 [e $ ! != ( _strlen (1 -> &U _line `*Cuc -> -> 32 `i `ui 1105  ]
 [e ) -> 0 `i ]
 [e $UE 1104  ]
 [e :U 1105 ]
-"58
+"62
 [v _res `i ~T0 @X0 1 a ]
-[; ;main.c: 58: int res = 0;
+[; ;main.c: 62: int res = 0;
 [e = _res -> 0 `i ]
-[; ;main.c: 60: if(strstr(line,uuid)!=0)res++;
-"60
+[; ;main.c: 64: if(strstr(line,uuid)!=0)res++;
+"64
 [e $ ! != ( _strstr (2 , -> &U _line `*Cuc -> &U _uuid `*Cuc -> -> 0 `i `*uc 1106  ]
 [e ++ _res -> 1 `i ]
 [e :U 1106 ]
-[; ;main.c: 62: if(strstr(line,"FFFFFFFFFFFFFFFF")!=0)res++;
-"62
+[; ;main.c: 66: if(strstr(line,"FFFFFFFFFFFFFFFF")!=0)res++;
+"66
 [e $ ! != ( _strstr (2 , -> &U _line `*Cuc :s 2C -> -> 0 `i `*uc 1107  ]
 [e ++ _res -> 1 `i ]
 [e :U 1107 ]
-[; ;main.c: 64: if(res>0){
-"64
+[; ;main.c: 68: if(res>0){
+"68
 [e $ ! > _res -> 0 `i 1108  ]
 {
-"66
-[v _hexval `uc ~T0 @X0 -> 4 `i a ]
-[; ;main.c: 66: char hexval[4];
-[; ;main.c: 67: sprintf(hexval,"%c%c",line[28],line[29]);
-"67
-[e ( _sprintf (1 , , (. , &U _hexval :s 3C -> *U + &U _line * -> -> -> 28 `i `ui `ux -> -> # *U &U _line `ui `ux `i -> *U + &U _line * -> -> -> 29 `i `ui `ux -> -> # *U &U _line `ui `ux `i ]
-[; ;main.c: 68: val = (int)strtol(hexval, (0), 16);
-"68
-[e = _val -> -> ( _strtol (3 , , -> &U _hexval `*Cuc -> -> 0 `i `**uc -> 16 `i `i `uc ]
-[; ;main.c: 70: return 1;
 "70
+[v _hexval `uc ~T0 @X0 -> 4 `i a ]
+[; ;main.c: 70: char hexval[4];
+[; ;main.c: 71: sprintf(hexval,"%c%c",line[28],line[29]);
+"71
+[e ( _sprintf (1 , , (. , &U _hexval :s 3C -> *U + &U _line * -> -> -> 28 `i `ui `ux -> -> # *U &U _line `ui `ux `i -> *U + &U _line * -> -> -> 29 `i `ui `ux -> -> # *U &U _line `ui `ux `i ]
+[; ;main.c: 72: val = (int)strtol(hexval, (0), 16);
+"72
+[e = _val -> -> ( _strtol (3 , , -> &U _hexval `*Cuc -> -> 0 `i `**uc -> 16 `i `i `uc ]
+[; ;main.c: 73: return 1;
+"73
 [e ) -> 1 `i ]
 [e $UE 1104  ]
-"71
+"74
 }
 [e :U 1108 ]
-[; ;main.c: 71: }
-[; ;main.c: 73: return 0;
-"73
+[; ;main.c: 74: }
+[; ;main.c: 75: return 0;
+"75
 [e ) -> 0 `i ]
 [e $UE 1104  ]
-[; ;main.c: 74: }
-"74
+[; ;main.c: 76: }
+"76
 [e :UE 1104 ]
 }
-"78
-[v _main `(v ~T0 @X0 1 ef ]
-{
-[; ;main.c: 78: void main(void) {
-[e :U _main ]
-[f ]
-[; ;main.c: 79: SYSTEM_Initialize();
-"79
-[e ( _SYSTEM_Initialize ..  ]
-[; ;main.c: 80: (INTCONbits.GIE = 1);
-"80
-[e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
-[; ;main.c: 81: (INTCONbits.PEIE = 1);
 "81
-[e = . . _INTCONbits 1 6 -> -> 1 `i `uc ]
+[v _InitRadio `(v ~T0 @X0 1 ef ]
+{
+[; ;main.c: 81: void InitRadio(void){
+[e :U _InitRadio ]
+[f ]
+[; ;main.c: 82: wait_5ms(5);
+"82
+[e ( _wait_5ms (1 -> 5 `i ]
+[; ;main.c: 83: printf("sys reset\r\n");
+"83
+[e ( _printf :s 4C ]
 [; ;main.c: 84: wait_5ms(5);
 "84
 [e ( _wait_5ms (1 -> 5 `i ]
-[; ;main.c: 85: printf("sys reset\r\n");
+[; ;main.c: 85: printf("sys get ver\r\n");
 "85
-[e ( _printf :s 4C ]
-[; ;main.c: 86: wait_5ms(5);
-"86
-[e ( _wait_5ms (1 -> 5 `i ]
-[; ;main.c: 87: printf("sys get ver\r\n");
-"87
 [e ( _printf :s 5C ]
+[; ;main.c: 86: read_line();
+"86
+[e ( _read_line ..  ]
+[; ;main.c: 87: printf("radio get sf\r\n");
+"87
+[e ( _printf :s 6C ]
 [; ;main.c: 88: read_line();
 "88
 [e ( _read_line ..  ]
-[; ;main.c: 89: printf("radio get sf\r\n");
+[; ;main.c: 89: printf("radio get bw\r\n");
 "89
-[e ( _printf :s 6C ]
+[e ( _printf :s 7C ]
 [; ;main.c: 90: read_line();
 "90
 [e ( _read_line ..  ]
-[; ;main.c: 91: printf("radio get bw\r\n");
+[; ;main.c: 91: printf("radio get cr\r\n");
 "91
-[e ( _printf :s 7C ]
+[e ( _printf :s 8C ]
 [; ;main.c: 92: read_line();
 "92
 [e ( _read_line ..  ]
-[; ;main.c: 93: printf("radio get cr\r\n");
+[; ;main.c: 93: printf("radio get prlen\r\n");
 "93
-[e ( _printf :s 8C ]
+[e ( _printf :s 9C ]
 [; ;main.c: 94: read_line();
 "94
 [e ( _read_line ..  ]
-[; ;main.c: 95: printf("radio get prlen\r\n");
+[; ;main.c: 95: printf("radio get pwr\r\n");
 "95
-[e ( _printf :s 9C ]
+[e ( _printf :s 10C ]
 [; ;main.c: 96: read_line();
 "96
 [e ( _read_line ..  ]
-[; ;main.c: 97: printf("radio get pwr\r\n");
+[; ;main.c: 97: printf("mac pause\r\n");
 "97
-[e ( _printf :s 10C ]
+[e ( _printf :s 11C ]
 [; ;main.c: 98: read_line();
 "98
 [e ( _read_line ..  ]
-[; ;main.c: 99: printf("mac pause\r\n");
-"99
-[e ( _printf :s 11C ]
-[; ;main.c: 100: read_line();
+[; ;main.c: 100: printf("radio set pwr -2\r\n");
 "100
-[e ( _read_line ..  ]
-[; ;main.c: 102: printf("radio set pwr -2\r\n");
-"102
 [e ( _printf :s 12C ]
+[; ;main.c: 101: read_line();
+"101
+[e ( _read_line ..  ]
+[; ;main.c: 102: printf("radio set bw 500\r\n");
+"102
+[e ( _printf :s 13C ]
 [; ;main.c: 103: read_line();
 "103
 [e ( _read_line ..  ]
-[; ;main.c: 104: printf("radio set bw 500\r\n");
+[; ;main.c: 104: printf("radio set sf sf7\r\n");
 "104
-[e ( _printf :s 13C ]
+[e ( _printf :s 14C ]
 [; ;main.c: 105: read_line();
 "105
 [e ( _read_line ..  ]
-[; ;main.c: 106: printf("radio set sf sf7\r\n");
+[; ;main.c: 106: printf("radio set cr 4/8\r\n");
 "106
-[e ( _printf :s 14C ]
+[e ( _printf :s 15C ]
 [; ;main.c: 107: read_line();
 "107
 [e ( _read_line ..  ]
-[; ;main.c: 108: printf("radio set cr 4/8\r\n");
+[; ;main.c: 108: printf("radio set crc on\r\n");
 "108
-[e ( _printf :s 15C ]
+[e ( _printf :s 16C ]
 [; ;main.c: 109: read_line();
 "109
 [e ( _read_line ..  ]
-[; ;main.c: 110: printf("radio set crc on\r\n");
-"110
-[e ( _printf :s 16C ]
-[; ;main.c: 111: read_line();
+[; ;main.c: 111: getUUID();
 "111
-[e ( _read_line ..  ]
-[; ;main.c: 113: getUUID();
-"113
 [e ( _getUUID ..  ]
-[; ;main.c: 115: srand((int)strtol(uuid, (0), 0));
-"115
+[; ;main.c: 114: }
+"114
+[e :UE 1109 ]
+}
+"121
+[v _main `(v ~T0 @X0 1 ef ]
+{
+[; ;main.c: 121: void main(void) {
+[e :U _main ]
+[f ]
+[; ;main.c: 122: SYSTEM_Initialize();
+"122
+[e ( _SYSTEM_Initialize ..  ]
+[; ;main.c: 123: (INTCONbits.GIE = 1);
+"123
+[e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
+[; ;main.c: 124: (INTCONbits.PEIE = 1);
+"124
+[e = . . _INTCONbits 1 6 -> -> 1 `i `uc ]
+[; ;main.c: 126: InitRadio();
+"126
+[e ( _InitRadio ..  ]
+[; ;main.c: 129: srand((int)strtol(uuid, (0), 0));
+"129
 [e ( _srand (1 -> -> ( _strtol (3 , , -> &U _uuid `*Cuc -> -> 0 `i `**uc -> 0 `i `i `ui ]
-"116
+"130
 [v _delay `i ~T0 @X0 1 a ]
-[; ;main.c: 116: int delay = 2000+(rand()%1000);
+[; ;main.c: 130: int delay = 2000+(rand()%1000);
 [e = _delay + -> 2000 `i % ( _rand ..  -> 1000 `i ]
-[; ;main.c: 117: printf("radio set wdt %d\r\n",delay);
-"117
+[; ;main.c: 131: printf("radio set wdt %d\r\n",delay);
+"131
 [e ( _printf , (. :s 17C _delay ]
-[; ;main.c: 118: read_line();
-"118
-[e ( _read_line ..  ]
-[; ;main.c: 132: printf("radio rx 0\r\n");
+[; ;main.c: 132: read_line();
 "132
+[e ( _read_line ..  ]
+[; ;main.c: 134: printf("radio rx 0\r\n");
+"134
 [e ( _printf :s 18C ]
-[; ;main.c: 133: read_line();
-"133
+[; ;main.c: 135: read_line();
+"135
 [e ( _read_line ..  ]
-"136
+"137
 [v _q `i ~T0 @X0 1 a ]
-[; ;main.c: 136: int q=0;
+[; ;main.c: 137: int q=0;
 [e = _q -> 0 `i ]
-[; ;main.c: 138: while(1){
-"138
-[e :U 1111 ]
-{
-[; ;main.c: 139: _delay((unsigned long)((1)*(64000000/4000.0)));
+[; ;main.c: 139: while(1){
 "139
-[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 140: q++;
+[e :U 1112 ]
+{
+[; ;main.c: 140: _delay((unsigned long)((1)*(64000000/4000.0)));
 "140
+[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
+[; ;main.c: 141: q++;
+"141
 [e ++ _q -> 1 `i ]
-[; ;main.c: 146: if(q>(2*delay)){
-"146
-[e $ ! > _q * -> 2 `i _delay 1113  ]
+[; ;main.c: 145: if(q>(2*delay)){break;}
+"145
+[e $ ! > _q * -> 2 `i _delay 1114  ]
 {
-[; ;main.c: 147: break;
-"147
-[e $U 1112  ]
-"148
-}
-[e :U 1113 ]
-[; ;main.c: 148: }
-[; ;main.c: 153: if(uartState>2){
-"153
-[e $ ! > -> _uartState `i -> 2 `i 1114  ]
-{
-[; ;main.c: 154: read_line();
-"154
-[e ( _read_line ..  ]
-[; ;main.c: 157: if(uartState==3){
-"157
-[e $ ! == -> _uartState `i -> 3 `i 1115  ]
-{
-[; ;main.c: 158: if(q>delay){
-"158
-[e $ ! > _q _delay 1116  ]
-{
-[; ;main.c: 159: uartState=5;
-"159
-[e = _uartState -> -> 5 `i `uc ]
-"160
-}
-[e :U 1116 ]
-"161
-}
-[e :U 1115 ]
-[; ;main.c: 160: }
-[; ;main.c: 161: }
-[; ;main.c: 165: if(uartState==4){
-"165
-[e $ ! == -> _uartState `i -> 4 `i 1117  ]
-{
-[; ;main.c: 167: if(process_message()){
-"167
-[e $ ! != ( _process_message ..  -> 0 `i 1118  ]
-{
-[; ;main.c: 168: delay = 2000+(rand()%1000);
-"168
-[e = _delay + -> 2000 `i % ( _rand ..  -> 1000 `i ]
-[; ;main.c: 169: printf("radio tx 42%s%02X%02X00000001\r\n",uuid,inc++,val);
-"169
-[e ( _printf , , , (. :s 19C -> &U _uuid `*Cuc -> ++ _inc -> -> 1 `i `uc `i -> _val `i ]
-[; ;main.c: 170: read_line();
-"170
-[e ( _read_line ..  ]
-[; ;main.c: 171: read_line();
-"171
-[e ( _read_line ..  ]
-[; ;main.c: 172: printf("radio set wdt %d\r\n",delay);
-"172
-[e ( _printf , (. :s 20C _delay ]
-[; ;main.c: 173: read_line();
-"173
-[e ( _read_line ..  ]
-[; ;main.c: 175: EPWM1_LoadDutyValue((uint16_t) val*4);
-"175
-[e ( _EPWM1_LoadDutyValue (1 * -> _val `ui -> -> 4 `i `ui ]
-[; ;main.c: 176: q=0;
-"176
-[e = _q -> 0 `i ]
-"177
-}
-[; ;main.c: 177: } else {
-[e $U 1119  ]
-[e :U 1118 ]
-{
-[; ;main.c: 178: if(q>delay){
-"178
-[e $ ! > _q _delay 1120  ]
-{
-[; ;main.c: 179: uartState=5;
-"179
-[e = _uartState -> -> 5 `i `uc ]
-"180
-}
-[e :U 1120 ]
-"181
-}
-[e :U 1119 ]
-"182
-}
-[e :U 1117 ]
-[; ;main.c: 180: }
-[; ;main.c: 181: }
-[; ;main.c: 182: }
-[; ;main.c: 184: if(uartState==5){
-"184
-[e $ ! == -> _uartState `i -> 5 `i 1121  ]
-{
-[; ;main.c: 185: delay = 2000+(rand()%1000);
-"185
-[e = _delay + -> 2000 `i % ( _rand ..  -> 1000 `i ]
-[; ;main.c: 186: printf("radio tx 42%s%02X%02X00000000\r\n",uuid,inc++,val);
-"186
-[e ( _printf , , , (. :s 21C -> &U _uuid `*Cuc -> ++ _inc -> -> 1 `i `uc `i -> _val `i ]
-[; ;main.c: 187: read_line();
-"187
-[e ( _read_line ..  ]
-[; ;main.c: 188: read_line();
-"188
-[e ( _read_line ..  ]
-[; ;main.c: 189: printf("radio set wdt %d\r\n",delay);
-"189
-[e ( _printf , (. :s 22C _delay ]
-[; ;main.c: 190: read_line();
-"190
-[e ( _read_line ..  ]
-[; ;main.c: 191: q=0;
-"191
-[e = _q -> 0 `i ]
-"192
-}
-[e :U 1121 ]
-[; ;main.c: 192: }
-[; ;main.c: 194: printf("radio rx 0\r\n");
-"194
-[e ( _printf :s 23C ]
-[; ;main.c: 195: read_line();
-"195
-[e ( _read_line ..  ]
-[; ;main.c: 196: uartState=0;
-"196
-[e = _uartState -> -> 0 `i `uc ]
-"198
+[e $U 1113  ]
 }
 [e :U 1114 ]
-"202
+[; ;main.c: 147: if(uartState>2){
+"147
+[e $ ! > -> _uartState `i -> 2 `i 1115  ]
+{
+[; ;main.c: 148: read_line();
+"148
+[e ( _read_line ..  ]
+[; ;main.c: 149: if(uartState==3){
+"149
+[e $ ! == -> _uartState `i -> 3 `i 1116  ]
+{
+[; ;main.c: 150: if(q>delay){
+"150
+[e $ ! > _q _delay 1117  ]
+{
+[; ;main.c: 151: uartState=5;
+"151
+[e = _uartState -> -> 5 `i `uc ]
+"152
 }
-[e :U 1110 ]
-"138
-[e $U 1111  ]
-[e :U 1112 ]
-[; ;main.c: 198: }
-[; ;main.c: 202: }
-[; ;main.c: 205: return;
-"205
-[e $UE 1109  ]
-[; ;main.c: 206: }
-"206
-[e :UE 1109 ]
+[e :U 1117 ]
+"153
+}
+[e :U 1116 ]
+[; ;main.c: 152: }
+[; ;main.c: 153: }
+[; ;main.c: 155: if(uartState==4){
+"155
+[e $ ! == -> _uartState `i -> 4 `i 1118  ]
+{
+[; ;main.c: 157: if(process_message()){
+"157
+[e $ ! != ( _process_message ..  -> 0 `i 1119  ]
+{
+[; ;main.c: 158: delay = 2000+(rand()%1000);
+"158
+[e = _delay + -> 2000 `i % ( _rand ..  -> 1000 `i ]
+[; ;main.c: 159: printf("radio tx 42%s%02X%02X00000001\r\n",uuid,inc++,val);
+"159
+[e ( _printf , , , (. :s 19C -> &U _uuid `*Cuc -> ++ _inc -> -> 1 `i `uc `i -> _val `i ]
+[; ;main.c: 160: read_line();
+"160
+[e ( _read_line ..  ]
+[; ;main.c: 161: read_line();
+"161
+[e ( _read_line ..  ]
+[; ;main.c: 162: printf("radio set wdt %d\r\n",delay);
+"162
+[e ( _printf , (. :s 20C _delay ]
+[; ;main.c: 163: read_line();
+"163
+[e ( _read_line ..  ]
+[; ;main.c: 165: EPWM1_LoadDutyValue((uint16_t) val*4);
+"165
+[e ( _EPWM1_LoadDutyValue (1 * -> _val `ui -> -> 4 `i `ui ]
+[; ;main.c: 166: q=0;
+"166
+[e = _q -> 0 `i ]
+"167
+}
+[; ;main.c: 167: } else {
+[e $U 1120  ]
+[e :U 1119 ]
+{
+[; ;main.c: 168: if(q>delay){
+"168
+[e $ ! > _q _delay 1121  ]
+{
+[; ;main.c: 169: uartState=5;
+"169
+[e = _uartState -> -> 5 `i `uc ]
+"170
+}
+[e :U 1121 ]
+"171
+}
+[e :U 1120 ]
+"172
+}
+[e :U 1118 ]
+[; ;main.c: 170: }
+[; ;main.c: 171: }
+[; ;main.c: 172: }
+[; ;main.c: 174: if(uartState==5){
+"174
+[e $ ! == -> _uartState `i -> 5 `i 1122  ]
+{
+[; ;main.c: 175: delay = 2000+(rand()%1000);
+"175
+[e = _delay + -> 2000 `i % ( _rand ..  -> 1000 `i ]
+[; ;main.c: 176: printf("radio tx 42%s%02X%02X00000000\r\n",uuid,inc++,val);
+"176
+[e ( _printf , , , (. :s 21C -> &U _uuid `*Cuc -> ++ _inc -> -> 1 `i `uc `i -> _val `i ]
+[; ;main.c: 177: read_line();
+"177
+[e ( _read_line ..  ]
+[; ;main.c: 178: read_line();
+"178
+[e ( _read_line ..  ]
+[; ;main.c: 179: printf("radio set wdt %d\r\n",delay);
+"179
+[e ( _printf , (. :s 22C _delay ]
+[; ;main.c: 180: read_line();
+"180
+[e ( _read_line ..  ]
+[; ;main.c: 181: q=0;
+"181
+[e = _q -> 0 `i ]
+"182
+}
+[e :U 1122 ]
+[; ;main.c: 182: }
+[; ;main.c: 184: printf("radio rx 0\r\n");
+"184
+[e ( _printf :s 23C ]
+[; ;main.c: 185: read_line();
+"185
+[e ( _read_line ..  ]
+[; ;main.c: 186: uartState=0;
+"186
+[e = _uartState -> -> 0 `i `uc ]
+"187
+}
+[e :U 1115 ]
+"188
+}
+[e :U 1111 ]
+"139
+[e $U 1112  ]
+[e :U 1113 ]
+[; ;main.c: 187: }
+[; ;main.c: 188: }
+[; ;main.c: 189: return;
+"189
+[e $UE 1110  ]
+[; ;main.c: 190: }
+"190
+[e :UE 1110 ]
 }
 [p f _sprintf 8912896 ]
 [p f _printf 10780804 ]

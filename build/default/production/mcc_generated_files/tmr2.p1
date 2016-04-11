@@ -7098,9 +7098,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;tmr2.c: 59: {
 [e :U _TMR2_Initialize ]
 [f ]
-[; ;tmr2.c: 63: T2CON = 0x00;
+[; ;tmr2.c: 63: T2CON = 0x7E;
 "63
-[e = _T2CON -> -> 0 `i `uc ]
+[e = _T2CON -> -> 126 `i `uc ]
 [; ;tmr2.c: 66: PR2 = 0xFF;
 "66
 [e = _PR2 -> -> 255 `i `uc ]

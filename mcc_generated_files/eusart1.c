@@ -215,6 +215,14 @@ void EUSART1_Receive_ISR(void)
     
     if(ready)return;
     
+    
+    
+    /**
+     * UART line processing
+     */
+    
+    
+    //caching line
     while(eusart1RxCount>0){
         line[index]=EUSART1_Read();        
         if (line[index] == '\n'){
@@ -224,20 +232,26 @@ void EUSART1_Receive_ISR(void)
         index++;        
     }
 
+    //when new line arrived
     if(state==1){
         line[--index] = '\0';     
         uartState=0;
+        //parse messages and set state variable
         if(!strcmp("radio_err",line)){
+            //when radio error received
             uartState=5;
-        } else if (strstr(line, "radio_rx") != NULL) {            
+        } else if (strstr(line, "radio_rx") != NULL) {
+            //when radio error received
             if(line[10]=='4'&&line[11]=='3'){ 
                 uartState=4;  
             } else {
                 uartState=3;
             }  
         } else if (!strcmp(line, "radio_tx_ok") != NULL) {
+            //when radio tx ok received
             uartState=1;
         } else if (!strcmp(line, "ok") != NULL) {
+            //when ok
             uartState=1;
         }
         index=0;
